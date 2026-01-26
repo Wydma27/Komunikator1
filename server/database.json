@@ -14,15 +14,11 @@
         "kuba",
         "Antek",
         "ebe43",
-        "patryk1"
+        "patryk1",
+        "Antek123"
       ],
       "createdAt": "2026-01-19T06:43:49.893Z",
-      "friendRequests": [
-        {
-          "from": "Antek123",
-          "timestamp": "2026-01-26T09:10:06.429Z"
-        }
-      ]
+      "friendRequests": []
     },
     {
       "id": "1768805114536",
@@ -207,7 +203,9 @@
       "email": "",
       "password": "Haslo123",
       "avatar": "🤖",
-      "friends": [],
+      "friends": [
+        "Wydma1"
+      ],
       "friendRequests": [],
       "createdAt": "2026-01-26T07:58:43.380Z"
     }
@@ -221,6 +219,136 @@
     "Antek-Wydma1": [],
     "Antek-Patryk": [],
     "Wydma1-ebe43": [],
-    "Wydma1-patryk1": []
+    "Wydma1-patryk1": [],
+    "Antek123-Wydma1": [
+      {
+        "id": "17694210039890.7431048074443838",
+        "content": "elo",
+        "sender": {
+          "id": "1768805029893",
+          "username": "Wydma1",
+          "avatar": "😎"
+        },
+        "timestamp": "2026-01-26T09:50:03.989Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "4qM-tgEckBWKUZExAAAH"
+        ]
+      },
+      {
+        "id": "17694210039990.9025736191592926",
+        "content": "elo",
+        "sender": {
+          "id": "1768805029893",
+          "username": "Wydma1",
+          "avatar": "😎"
+        },
+        "timestamp": "2026-01-26T09:50:03.999Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "4qM-tgEckBWKUZExAAAH"
+        ]
+      },
+      {
+        "id": "17694210305000.591824866225497",
+        "content": "elo żelo",
+        "sender": {
+          "id": "1769414323380",
+          "username": "Antek123",
+          "avatar": "🤖"
+        },
+        "timestamp": "2026-01-26T09:50:30.501Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "bgBOGtrrtl-n28UrAAAJ"
+        ]
+      },
+      {
+        "id": "17694210305060.815130785170511",
+        "content": "elo żelo",
+        "sender": {
+          "id": "1769414323380",
+          "username": "Antek123",
+          "avatar": "🤖"
+        },
+        "timestamp": "2026-01-26T09:50:30.507Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "bgBOGtrrtl-n28UrAAAJ"
+        ]
+      },
+      {
+        "id": "17694210344340.7333935483224145",
+        "content": "https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif",
+        "sender": {
+          "id": "1768805029893",
+          "username": "Wydma1",
+          "avatar": "😎"
+        },
+        "timestamp": "2026-01-26T09:50:34.434Z",
+        "type": "gif",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "4qM-tgEckBWKUZExAAAH"
+        ]
+      },
+      {
+        "id": "17694210344410.6311400879668876",
+        "content": "https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif",
+        "sender": {
+          "id": "1768805029893",
+          "username": "Wydma1",
+          "avatar": "😎"
+        },
+        "timestamp": "2026-01-26T09:50:34.441Z",
+        "type": "gif",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "4qM-tgEckBWKUZExAAAH"
+        ]
+      },
+      {
+        "id": "17694220246690.7218091054341902",
+        "content": "1]",
+        "sender": {
+          "id": "1768805029893",
+          "username": "Wydma1",
+          "avatar": "😎"
+        },
+        "timestamp": "2026-01-26T10:07:04.669Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "itcrIdCgz7qUA4czAAAN"
+        ]
+      },
+      {
+        "id": "17694220246750.7055189226647445",
+        "content": "1]",
+        "sender": {
+          "id": "1768805029893",
+          "username": "Wydma1",
+          "avatar": "😎"
+        },
+        "timestamp": "2026-01-26T10:07:04.675Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "itcrIdCgz7qUA4czAAAN"
+        ]
+      }
+    ]
   }
 }

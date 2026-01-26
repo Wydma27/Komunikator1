@@ -41,6 +41,7 @@ function ChatWindow({
     const [replyingTo, setReplyingTo] = useState<Message | null>(null);
     const [showProfileInfo, setShowProfileInfo] = useState(false); // Modal profilu
     const [isSending, setIsSending] = useState(false); // Prevent double send
+    const sendingLock = useRef(false); // Immediate lock
 
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -49,6 +50,12 @@ function ChatWindow({
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
+
+    useEffect(() => {
+        // Reset lock on unmount or chat change
+        sendingLock.current = false;
+        setIsSending(false);
+    }, [chatId]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setMessageInput(e.target.value);
@@ -67,8 +74,9 @@ function ChatWindow({
     };
 
     const sendMessage = (content: string, type: 'text' | 'image' | 'gif' = 'text') => {
-        if (!socket || !content.trim() || isSending) return;
+        if (!socket || !content.trim() || sendingLock.current) return;
 
+        sendingLock.current = true;
         setIsSending(true);
 
         socket.emit('message:send', {
@@ -84,7 +92,10 @@ function ChatWindow({
         setShowGifPicker(false);
 
         // Reset sending flag after short delay
-        setTimeout(() => setIsSending(false), 300);
+        setTimeout(() => {
+            sendingLock.current = false;
+            setIsSending(false);
+        }, 500);
 
         inputRef.current?.focus();
 
@@ -96,9 +107,7 @@ function ChatWindow({
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (!isSending) {
-            sendMessage(messageInput);
-        }
+        sendMessage(messageInput);
     };
 
     const handleEmojiClick = (emojiData: EmojiClickData) => {
@@ -122,7 +131,7 @@ function ChatWindow({
     };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-        if (e.key === 'Enter' && !e.shiftKey && !isSending) {
+        if (e.key === 'Enter' && !e.shiftKey && !sendingLock.current) {
             e.preventDefault();
             sendMessage(messageInput);
         }
