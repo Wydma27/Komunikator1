@@ -39,6 +39,7 @@ function Sidebar({
 }: SidebarProps) {
     const [searchQuery, setSearchQuery] = useState('');
     const [showGroupModal, setShowGroupModal] = useState(false);
+    const [showNotifications, setShowNotifications] = useState(false);
     const [newGroupName, setNewGroupName] = useState('');
     const [selectedGroupMembers, setSelectedGroupMembers] = useState<string[]>([]);
 
@@ -105,9 +106,57 @@ function Sidebar({
                 <div className="header-top">
                     <h2>Wiadomości</h2>
                     <div className="sidebar-actions">
+                        <button className="notification-btn" onClick={() => setShowNotifications(!showNotifications)} title="Powiadomienia">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                            {currentUser.friendRequests && currentUser.friendRequests.length > 0 && (
+                                <span className="notification-badge">{currentUser.friendRequests.length}</span>
+                            )}
+                        </button>
                         <button className="edit-profile-btn" onClick={onEditProfile} title="Edytuj profil">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                         </button>
+
+                        {/* Panel powiadomień */}
+                        {showNotifications && (
+                            <div className="notifications-panel">
+                                <div className="notifications-header">
+                                    <h3>Powiadomienia</h3>
+                                    <button className="close-notifications" onClick={() => setShowNotifications(false)}>✕</button>
+                                </div>
+                                <div className="notifications-list">
+                                    {currentUser.friendRequests && currentUser.friendRequests.length > 0 ? (
+                                        currentUser.friendRequests.map(req => (
+                                            <div key={req.from} className="notification-item">
+                                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+                                                    <strong>{req.from}</strong> <span style={{ fontSize: '12px' }}>wysłał zaproszenie</span>
+                                                </div>
+                                                <div style={{ display: 'flex', gap: '8px' }}>
+                                                    <button
+                                                        className="accept-btn"
+                                                        style={{ flex: 1, padding: '4px', fontSize: '12px' }}
+                                                        onClick={() => onRespondToRequest(req.from, 'accept')}
+                                                    >
+                                                        Akceptuj
+                                                    </button>
+                                                    <button
+                                                        className="reject-btn"
+                                                        style={{ flex: 1, padding: '4px', fontSize: '12px' }}
+                                                        onClick={() => onRespondToRequest(req.from, 'reject')}
+                                                    >
+                                                        Odrzuć
+                                                    </button>
+                                                </div>
+                                                <div className="notification-time">
+                                                    {formatDistanceToNow(new Date(req.timestamp), { addSuffix: true, locale: pl })}
+                                                </div>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <div className="no-notifications">Brak nowych powiadomień</div>
+                                    )}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
 
@@ -139,36 +188,7 @@ function Sidebar({
 
             <div className="users-section">
 
-                {/* sekcja zaproszeń */}
-                {currentUser.friendRequests && currentUser.friendRequests.length > 0 && (
-                    <div className="friend-requests-section">
-                        <div className="section-header">
-                            <h3>Zaproszenia ({currentUser.friendRequests.length})</h3>
-                        </div>
-                        <div className="requests-list">
-                            {currentUser.friendRequests.map(req => (
-                                <div key={req.from} className="user-item request-item">
-                                    <div className="user-details">
-                                        <h4>{req.from}</h4>
-                                        <p className="request-time">{formatDistanceToNow(new Date(req.timestamp), { addSuffix: true, locale: pl })}</p>
-                                    </div>
-                                    <div className="request-actions">
-                                        <button
-                                            className="accept-btn"
-                                            onClick={(e) => { e.stopPropagation(); onRespondToRequest(req.from, 'accept'); }}
-                                            title="Akceptuj"
-                                        >✓</button>
-                                        <button
-                                            className="reject-btn"
-                                            onClick={(e) => { e.stopPropagation(); onRespondToRequest(req.from, 'reject'); }}
-                                            title="Odrzuć"
-                                        >✗</button>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
+
 
                 {/* General chat removed */}
 
@@ -294,6 +314,7 @@ function Sidebar({
                             <button className="close-button" onClick={() => setShowGroupModal(false)}>✕</button>
                         </div>
                         <div className="modal-body">
+                            {/* ... existing modal body ... */}
                             <input
                                 type="text"
                                 placeholder="Nazwa grupy"
