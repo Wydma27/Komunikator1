@@ -1,0 +1,207 @@
+.message {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    max-width: 70%;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.message.own-message {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.message-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.message.own-message .message-content-wrapper {
+    align-items: flex-end;
+}
+
+.message-sender {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-left: 12px;
+}
+
+.message-bubble-container {
+    position: relative;
+    group: hover;
+}
+
+.message-bubble {
+    padding: 10px 16px;
+    background-color: var(--bg-message-other);
+    color: var(--text-primary);
+    border-radius: 18px;
+    border-bottom-left-radius: 4px;
+    position: relative;
+    font-size: 15px;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.message.own-message .message-bubble {
+    background-color: var(--bg-message-own);
+    color: white;
+    /* Zawsze biały tekst na niebieskim tle */
+    border-radius: 18px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 18px;
+}
+
+.message-gif,
+.message-image {
+    max-width: 100%;
+    border-radius: 12px;
+    margin-top: 4px;
+}
+
+.message-time {
+    font-size: 10px;
+    opacity: 0.7;
+    display: block;
+    margin-top: 4px;
+    text-align: right;
+}
+
+/* Actions and Reactions */
+.message-actions {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    background-color: var(--bg-app);
+    padding: 4px;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+}
+
+.message-bubble-container:hover .message-actions {
+    opacity: 1;
+}
+
+.message.own-message .message-actions {
+    left: -70px;
+}
+
+.message.other-message .message-actions {
+    right: -70px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--text-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn:hover {
+    background-color: var(--bg-sidebar);
+    color: var(--text-primary);
+}
+
+.reaction-picker {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    border-radius: var(--radius-full);
+    display: flex;
+    gap: 4px;
+    box-shadow: var(--shadow-md);
+    z-index: 10;
+    margin-bottom: 8px;
+}
+
+.reaction-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 4px;
+    border-radius: 4px;
+    transition: transform 0.2s;
+}
+
+.reaction-btn:hover {
+    transform: scale(1.2);
+    background-color: var(--bg-sidebar);
+}
+
+.message-reactions {
+    display: flex;
+    gap: 4px;
+    margin-top: 4px;
+    flex-wrap: wrap;
+}
+
+.message.own-message .message-reactions {
+    justify-content: flex-end;
+}
+
+.reaction-badge {
+    background-color: var(--bg-sidebar);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 11px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: default;
+}
+
+.reaction-badge.user-reacted {
+    background-color: rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.4);
+}
+
+.read-receipts {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2px;
+}
+
+.read-avatar {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid var(--bg-chat);
+    margin-left: -4px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

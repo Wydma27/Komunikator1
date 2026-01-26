@@ -1,0 +1,196 @@
+{
+  "users": [
+    {
+      "id": "1768805029893",
+      "username": "Wydma1",
+      "email": "jwydmuch07@gmail.com",
+      "password": "12345",
+      "avatar": "😎",
+      "friends": [
+        "antek",
+        "antek12",
+        "elo1",
+        "antek1",
+        "kuba",
+        "Antek",
+        "ebe43",
+        "patryk1"
+      ],
+      "createdAt": "2026-01-19T06:43:49.893Z",
+      "friendRequests": []
+    },
+    {
+      "id": "1768805114536",
+      "username": "antek",
+      "email": "",
+      "password": "12345",
+      "avatar": "😀",
+      "friends": [
+        "Wydma1"
+      ],
+      "createdAt": "2026-01-19T06:45:14.536Z",
+      "friendRequests": []
+    },
+    {
+      "id": "1768805648187",
+      "username": "antek12",
+      "email": "",
+      "password": "12345",
+      "avatar": "😀",
+      "friends": [
+        "Wydma1"
+      ],
+      "createdAt": "2026-01-19T06:54:08.187Z",
+      "friendRequests": []
+    },
+    {
+      "id": "1768986370462",
+      "username": "elo",
+      "email": "",
+      "password": "1234",
+      "avatar": "😎",
+      "friends": [],
+      "createdAt": "2026-01-21T09:06:10.462Z",
+      "friendRequests": []
+    },
+    {
+      "id": "1768987046563",
+      "username": "elo1",
+      "email": "",
+      "password": "12345",
+      "avatar": "😀",
+      "friends": [
+        "Wydma1"
+      ],
+      "createdAt": "2026-01-21T09:17:26.563Z",
+      "friendRequests": []
+    },
+    {
+      "id": "1768989266398",
+      "username": "antek1",
+      "email": "",
+      "password": "1234",
+      "avatar": "🤖",
+      "friends": [
+        "Wydma1"
+      ],
+      "friendRequests": [],
+      "createdAt": "2026-01-21T09:54:26.398Z"
+    },
+    {
+      "id": "1768989466079",
+      "username": "ebe",
+      "email": "",
+      "password": "12345",
+      "avatar": "😀",
+      "friends": [],
+      "friendRequests": [],
+      "createdAt": "2026-01-21T09:57:46.079Z"
+    },
+    {
+      "id": "1768989487430",
+      "username": "ebe1",
+      "email": "",
+      "password": "12345",
+      "avatar": "😀",
+      "friends": [],
+      "friendRequests": [],
+      "createdAt": "2026-01-21T09:58:07.430Z"
+    },
+    {
+      "id": "1768989588242",
+      "username": "kuba",
+      "email": "",
+      "password": "0987",
+      "avatar": "💎",
+      "friends": [
+        "Wydma1"
+      ],
+      "friendRequests": [],
+      "createdAt": "2026-01-21T09:59:48.242Z"
+    },
+    {
+      "id": "1768989614403",
+      "username": "patryk",
+      "email": "",
+      "password": "123456",
+      "avatar": "🐶",
+      "friends": [],
+      "friendRequests": [],
+      "createdAt": "2026-01-21T10:00:14.403Z"
+    },
+    {
+      "id": "1768989961287",
+      "username": "Antek1",
+      "email": "",
+      "password": "0987",
+      "avatar": "🎭",
+      "friends": [
+        "Wydma1",
+        "Patryk"
+      ],
+      "friendRequests": [],
+      "createdAt": "2026-01-21T10:06:01.287Z"
+    },
+    {
+      "id": "1768990131636",
+      "username": "Patryk",
+      "email": "",
+      "password": "1235",
+      "avatar": "🎪",
+      "friends": [
+        "Antek",
+        "Antek132"
+      ],
+      "friendRequests": [],
+      "createdAt": "2026-01-21T10:08:51.636Z"
+    },
+    {
+      "id": "1768990352056",
+      "username": "Antek132",
+      "email": "",
+      "password": "123456789",
+      "avatar": "😀",
+      "friends": [
+        "Patryk"
+      ],
+      "friendRequests": [],
+      "createdAt": "2026-01-21T10:12:32.056Z"
+    },
+    {
+      "id": "1768990630147",
+      "username": "ebe43",
+      "email": "",
+      "password": "12345",
+      "avatar": "🎮",
+      "friends": [
+        "Wydma1"
+      ],
+      "friendRequests": [],
+      "createdAt": "2026-01-21T10:17:10.147Z"
+    },
+    {
+      "id": "1768990881405",
+      "username": "patryk1",
+      "email": "",
+      "password": "123456",
+      "avatar": "💎",
+      "friends": [
+        "Wydma1"
+      ],
+      "friendRequests": [],
+      "createdAt": "2026-01-21T10:21:21.405Z"
+    }
+  ],
+  "messages": {
+    "general": [],
+    "Wydma1-antek": [],
+    "Wydma1-antek12": [],
+    "Wydma1-elo1": [],
+    "Wydma1-antek1": [],
+    "Antek-Wydma1": [],
+    "Antek-Patryk": [],
+    "Wydma1-ebe43": [],
+    "Wydma1-patryk1": []
+  }
+}

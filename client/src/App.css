@@ -1,0 +1,242 @@
+.app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Animowane tło */
+.app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(0, 132, 255, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 40%);
+  animation: pulse 10s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app>* {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+}/* Alert Toast */
+.alert-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(30, 30, 30, 0.95);
+    border-left: 4px solid var(--accent-color);
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    animation: slideIn 0.3s ease-out;
+    max-width: 300px;
+}
+
+.alert-toast h4 {
+    margin: 0 0 5px 0;
+    color: var(--accent-color);
+    font-size: 14px;
+}
+
+.alert-toast p {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 13px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Friend Requests */
+.friend-requests-section {
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 10px;
+}
+
+.request-item {
+    cursor: default !important;
+    padding: 10px !important;
+    background: rgba(var(--accent-color-rgb), 0.05);
+}
+
+.request-item:hover {
+    background: rgba(var(--accent-color-rgb), 0.1);
+}
+
+.request-time {
+    font-size: 11px !important;
+    color: var(--text-secondary);
+}
+
+.request-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.accept-btn,
+.reject-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: bold;
+}
+
+.accept-btn {
+    background: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+}
+
+.accept-btn:hover {
+    background: #2ecc71;
+    color: white;
+}
+
+.reject-btn {
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+}
+
+.reject-btn:hover {
+    background: #e74c3c;
+    color: white;
+}
+
+/* Update sidebar to accommodate */
+.users-list {
+    overflow-y: auto;
+}/* Alert Toast */
+.alert-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(30, 30, 30, 0.95);
+    border-left: 4px solid var(--accent-color);
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    animation: slideIn 0.3s ease-out;
+    max-width: 300px;
+}
+
+.alert-toast h4 {
+    margin: 0 0 5px 0;
+    color: var(--accent-color);
+    font-size: 14px;
+}
+
+.alert-toast p {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 13px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Friend Requests */
+.friend-requests-section {
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 10px;
+}
+
+.request-item {
+    cursor: default !important;
+    padding: 10px !important;
+    background: rgba(var(--accent-color-rgb), 0.05);
+}
+
+.request-item:hover {
+    background: rgba(var(--accent-color-rgb), 0.1);
+}
+
+.request-time {
+    font-size: 11px !important;
+    color: var(--text-secondary);
+}
+
+.request-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.accept-btn,
+.reject-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: bold;
+}
+
+.accept-btn {
+    background: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+}
+
+.accept-btn:hover {
+    background: #2ecc71;
+    color: white;
+}
+
+.reject-btn {
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+}
+
+.reject-btn:hover {
+    background: #e74c3c;
+    color: white;
+}
+
+/* Update sidebar to accommodate */
+.users-list {
+    overflow-y: auto;
+}

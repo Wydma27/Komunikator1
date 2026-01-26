@@ -1,0 +1,28 @@
+{
+  "name": "messenger-app",
+  "version": "1.0.0",
+  "main": "server/index.js",
+  "scripts": {
+    "server": "node server/index.js",
+    "client": "cd client && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install:all": "npm install && cd client && npm install"
+  },
+  "keywords": [
+    "messenger",
+    "chat",
+    "socket.io",
+    "real-time"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "Komunikator w czasie rzeczywistym inspirowany Messengerem",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
