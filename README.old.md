@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 💬 Messenger - Komunikator w Czasie Rzeczywistym
 
 Nowoczesny komunikator inspirowany Facebook Messengerem z pełną funkcjonalnością czasu rzeczywistego.
@@ -192,6 +191,3 @@ ISC
 ## 👨‍💻 Autor
 
 Stworzono z ❤️ używając React, Node.js i Socket.io
-=======
-# Komunikator1
->>>>>>> 0521ccc0f79a22a884080df468ebe2cacd29896e
