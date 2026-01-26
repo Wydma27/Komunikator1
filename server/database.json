@@ -348,7 +348,248 @@
         "readBy": [
           "itcrIdCgz7qUA4czAAAN"
         ]
+      },
+      {
+        "id": "17694221297610.6216437311096941",
+        "content": "1",
+        "sender": {
+          "id": "1768805029893",
+          "username": "Wydma1",
+          "avatar": "😎"
+        },
+        "timestamp": "2026-01-26T10:08:49.761Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "itcrIdCgz7qUA4czAAAN"
+        ]
+      },
+      {
+        "id": "17694221297670.6016078822904438",
+        "content": "1",
+        "sender": {
+          "id": "1768805029893",
+          "username": "Wydma1",
+          "avatar": "😎"
+        },
+        "timestamp": "2026-01-26T10:08:49.767Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "itcrIdCgz7qUA4czAAAN"
+        ]
+      },
+      {
+        "id": "17694221310370.04558575831006029",
+        "content": "1",
+        "sender": {
+          "id": "1768805029893",
+          "username": "Wydma1",
+          "avatar": "😎"
+        },
+        "timestamp": "2026-01-26T10:08:51.038Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "itcrIdCgz7qUA4czAAAN"
+        ]
+      },
+      {
+        "id": "17694221310410.3891811305810242",
+        "content": "1",
+        "sender": {
+          "id": "1768805029893",
+          "username": "Wydma1",
+          "avatar": "😎"
+        },
+        "timestamp": "2026-01-26T10:08:51.041Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "itcrIdCgz7qUA4czAAAN"
+        ]
+      },
+      {
+        "id": "17694221355780.6501258380672856",
+        "content": "cosik",
+        "sender": {
+          "id": "1769414323380",
+          "username": "Antek123",
+          "avatar": "🤖"
+        },
+        "timestamp": "2026-01-26T10:08:55.578Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "T4vtYY997hcVIs9cAAAP"
+        ]
+      },
+      {
+        "id": "17694221355830.04924020605648938",
+        "content": "cosik",
+        "sender": {
+          "id": "1769414323380",
+          "username": "Antek123",
+          "avatar": "🤖"
+        },
+        "timestamp": "2026-01-26T10:08:55.583Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "T4vtYY997hcVIs9cAAAP"
+        ]
+      },
+      {
+        "id": "17694221656900.31944048181168583",
+        "content": "cos",
+        "sender": {
+          "id": "1769414323380",
+          "username": "Antek123",
+          "avatar": "🤖"
+        },
+        "timestamp": "2026-01-26T10:09:25.690Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "EiPMP0RLTDJpIyi-AAAR"
+        ]
+      },
+      {
+        "id": "17694221656970.7160899536909044",
+        "content": "cos",
+        "sender": {
+          "id": "1769414323380",
+          "username": "Antek123",
+          "avatar": "🤖"
+        },
+        "timestamp": "2026-01-26T10:09:25.697Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "EiPMP0RLTDJpIyi-AAAR"
+        ]
+      },
+      {
+        "id": "17694221766010.7237177341350074",
+        "content": "1",
+        "sender": {
+          "id": "1769414323380",
+          "username": "Antek123",
+          "avatar": "🤖"
+        },
+        "timestamp": "2026-01-26T10:09:36.601Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "qsiCrJqwwtErsy0vAAAT"
+        ]
+      },
+      {
+        "id": "17694221766040.6431475480520497",
+        "content": "1",
+        "sender": {
+          "id": "1769414323380",
+          "username": "Antek123",
+          "avatar": "🤖"
+        },
+        "timestamp": "2026-01-26T10:09:36.604Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "qsiCrJqwwtErsy0vAAAT"
+        ]
+      },
+      {
+        "id": "17694223618680.5658467473615059",
+        "content": "2",
+        "sender": {
+          "id": "1769414323380",
+          "username": "Antek123",
+          "avatar": "🤖"
+        },
+        "timestamp": "2026-01-26T10:12:41.868Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "IzGj0P959bg-9uFyAAAX"
+        ]
+      },
+      {
+        "id": "17694223618720.3280386214688107",
+        "content": "2",
+        "sender": {
+          "id": "1769414323380",
+          "username": "Antek123",
+          "avatar": "🤖"
+        },
+        "timestamp": "2026-01-26T10:12:41.872Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "IzGj0P959bg-9uFyAAAX"
+        ]
+      },
+      {
+        "id": "17694224608450.9693554914680087",
+        "content": "3",
+        "sender": {
+          "id": "1769414323380",
+          "username": "Antek123",
+          "avatar": "🤖"
+        },
+        "timestamp": "2026-01-26T10:14:20.846Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "6HMkVJvK1FmXU-DyAAAZ"
+        ]
+      },
+      {
+        "id": "17694224608520.613617326503423",
+        "content": "3",
+        "sender": {
+          "id": "1769414323380",
+          "username": "Antek123",
+          "avatar": "🤖"
+        },
+        "timestamp": "2026-01-26T10:14:20.853Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "6HMkVJvK1FmXU-DyAAAZ"
+        ]
+      },
+      {
+        "id": "17694228926840.055422652695233054",
+        "content": "3",
+        "sender": {
+          "id": "1769414323380",
+          "username": "Antek123",
+          "avatar": "🤖"
+        },
+        "timestamp": "2026-01-26T10:21:32.684Z",
+        "type": "text",
+        "replyTo": null,
+        "reactions": {},
+        "readBy": [
+          "zD1Raq6ODhknmGDaAAAD"
+        ]
       }
     ]
-  }
+  },
+  "groups": []
 }
