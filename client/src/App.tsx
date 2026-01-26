@@ -5,14 +5,15 @@ import ChatWindow from './components/ChatWindow';
 import Sidebar from './components/Sidebar';
 import LoginScreen from './components/LoginScreen';
 import ProfileEditor from './components/ProfileEditor';
-import type { User, Message } from './types';
+import type { User, Message, Group } from './types';
 
-const SOCKET_URL = 'http://localhost:3005';
+const SOCKET_URL = 'http://localhost:8000';
 
 function App() {
   const [socket, setSocket] = useState<Socket | null>(null);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [users, setUsers] = useState<User[]>([]);
+  const [groups, setGroups] = useState<Group[]>([]);
   const [chats, setChats] = useState<Record<string, Message[]>>({});
   const [activeChatId, setActiveChatId] = useState<string>('');
   const [typingUsers, setTypingUsers] = useState<Record<string, Set<string>>>({ 'general': new Set() });
@@ -80,6 +81,16 @@ function App() {
       // Ensure current user is up to date too
       const me = allUsers.find(u => u.username === currentUser.username);
       if (me) setCurrentUser(prev => ({ ...prev!, ...me }));
+    });
+
+    newSocket.on('groups:list', (userGroups: Group[]) => {
+      console.log('📋 Received groups:list', userGroups.length);
+      setGroups(userGroups);
+    });
+
+    newSocket.on('group:created', (newGroup: Group) => {
+      setGroups(prev => [...prev, newGroup]);
+      setAlert({ title: 'Nowa grupa', message: `Zostałeś dodany do grupy ${newGroup.name}`, visible: true });
     });
 
     newSocket.on('users:online', (onlineUsersList: User[]) => {
@@ -251,17 +262,46 @@ function App() {
     }
   };
 
+  const handleCreateGroup = async (name: string, members: string[]) => {
+    if (!currentUser) return;
+    try {
+      const response = await fetch(`${SOCKET_URL}/api/groups/create`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, members, createdBy: currentUser.username })
+      });
+      const data = await response.json();
+      if (data.success) {
+        // Group will be added via socket event 'group:created'
+      } else {
+        setAlert({ title: 'Błąd', message: data.message, visible: true });
+      }
+    } catch (err) {
+      console.error(err);
+      setAlert({ title: 'Błąd', message: 'Nie udało się utworzyć grupy', visible: true });
+    }
+  };
+
   if (!currentUser) return <LoginScreen onLogin={handleLogin} />;
 
+  const activeGroup = groups.find(g => g.id === activeChatId);
   const activeChatUser = users.find(u => u.username === activeChatId);
-  const activeChatName = activeChatId === 'general' ? 'Czat Ogólny' : (activeChatUser?.username || activeChatId);
-  const activeChatAvatar = activeChatId === 'general' ? undefined : activeChatUser?.avatar;
+
+  let activeChatName = '';
+  if (activeGroup) {
+    activeChatName = activeGroup.name;
+  } else {
+    activeChatName = activeChatId === 'general' ? 'Czat Ogólny' : (activeChatUser?.username || activeChatId);
+  }
+
+  const activeChatAvatar = activeGroup ? undefined : (activeChatId === 'general' ? undefined : activeChatUser?.avatar);
 
   return (
     <div className="app">
       <Sidebar
         users={users}
         currentUser={currentUser}
+        groups={groups}
         isConnected={isConnected}
         onLogout={handleLogout}
         onThemeToggle={() => setIsDarkMode(prev => !prev)}
@@ -271,6 +311,7 @@ function App() {
         onSelectChat={handleSelectChat}
         onAddFriend={handleAddFriend}
         onRespondToRequest={handleRespondToRequest}
+        onCreateGroup={handleCreateGroup}
         chats={chats}
       />
 

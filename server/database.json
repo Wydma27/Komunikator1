@@ -17,7 +17,12 @@
         "patryk1"
       ],
       "createdAt": "2026-01-19T06:43:49.893Z",
-      "friendRequests": []
+      "friendRequests": [
+        {
+          "from": "Antek123",
+          "timestamp": "2026-01-26T09:10:06.429Z"
+        }
+      ]
     },
     {
       "id": "1768805114536",
@@ -41,7 +46,12 @@
         "Wydma1"
       ],
       "createdAt": "2026-01-19T06:54:08.187Z",
-      "friendRequests": []
+      "friendRequests": [
+        {
+          "from": "Antek123",
+          "timestamp": "2026-01-26T09:23:35.520Z"
+        }
+      ]
     },
     {
       "id": "1768986370462",
@@ -180,6 +190,26 @@
       ],
       "friendRequests": [],
       "createdAt": "2026-01-21T10:21:21.405Z"
+    },
+    {
+      "id": "1769414238480",
+      "username": "Antek",
+      "email": "",
+      "password": "Haslo123",
+      "avatar": "😎",
+      "friends": [],
+      "friendRequests": [],
+      "createdAt": "2026-01-26T07:57:18.480Z"
+    },
+    {
+      "id": "1769414323380",
+      "username": "Antek123",
+      "email": "",
+      "password": "Haslo123",
+      "avatar": "🤖",
+      "friends": [],
+      "friendRequests": [],
+      "createdAt": "2026-01-26T07:58:43.380Z"
     }
   ],
   "messages": {

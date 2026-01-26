@@ -348,7 +348,7 @@ io.on('connection', (socket) => {
     });
 });
 
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT || 8000;
 server.listen(PORT, '0.0.0.0', () => {
     // Uruchom cleanup co godzinę
     setInterval(() => {
@@ -409,9 +409,13 @@ io.on('connection', (socket) => {
             const generalMessages = db.getMessages('general');
             socket.emit('messages:history', { chatId: 'general', messages: generalMessages });
 
-            // Wyślij info o zalogowanym użytkowniku (żeby odświeżyć friendRequests)
+            // Wyślij info o zalogowanym użytkowniku
             const { password, ...currentUserData } = dbUser;
             socket.emit('user:data', currentUserData);
+
+            // Wyślij grupy użytkownika
+            const userGroups = db.getUserGroups(username);
+            socket.emit('groups:list', userGroups);
         }
     });
 
@@ -517,9 +521,18 @@ io.on('connection', (socket) => {
         const currentUsername = onlineUsers.get(socket.id);
         console.log(`📜 Fetching history for chatId: ${chatId}, user: ${currentUsername}`);
 
-        // If chatId is a username (private chat), construct the proper DB chatId
         let dbChatId = chatId;
-        if (chatId !== 'general' && currentUsername) {
+
+        if (chatId.startsWith('group_')) {
+            // Group chat
+            const group = db.getGroup(chatId);
+            if (!group || !group.members.includes(currentUsername)) {
+                console.log('User not in group or group not found');
+                return;
+            }
+            // dbChatId is already correct
+        } else if (chatId !== 'general' && currentUsername) {
+            // Private chat
             const usernames = [currentUsername, chatId].sort();
             dbChatId = usernames.join('-');
             console.log(`   Constructed DB chatId: ${dbChatId}`);
@@ -554,7 +567,31 @@ io.on('connection', (socket) => {
             readBy: [socket.id]
         };
 
-        if (to && to !== 'general') {
+        if (to && to.startsWith('group_')) {
+            // Wiadomość grupowa
+            const group = db.getGroup(to);
+            if (group && group.members.includes(senderUsername)) {
+                db.saveMessage(to, newMessage);
+
+                // Wyślij do wszystkich członków grupy
+                group.members.forEach(member => {
+                    const socketId = getSocketIdByUsername(member);
+                    if (socketId) {
+                        io.to(socketId).emit('message:new', { chatId: to, message: newMessage });
+
+                        if (member !== senderUsername) {
+                            io.to(socketId).emit('alert:new', {
+                                title: `Nowa wiadomość w grupie ${group.name}`,
+                                message: `${senderUsername}: ${content}`,
+                                type: 'message',
+                                from: to
+                            });
+                        }
+                    }
+                });
+            }
+
+        } else if (to && to !== 'general') {
             const recipientUser = db.findUserByUsername(to);
             if (!recipientUser) return;
 
@@ -568,23 +605,17 @@ io.on('connection', (socket) => {
             console.log(`   Sending to sender (${senderUsername}) with chatId: ${to}`);
             socket.emit('message:new', { chatId: to, message: newMessage });
 
-            // Wyślij do odbiorcy - WAŻNE: ALERT
+            // Wyślij do odbiorcy
             const recipientSocketId = getSocketIdByUsername(to);
-            console.log(`   Recipient ${to} socket: ${recipientSocketId}`);
-
             if (recipientSocketId) {
-                // Wyślij wiadomość
                 console.log(`   Sending to recipient (${to}) with chatId: ${senderUsername}`);
                 io.to(recipientSocketId).emit('message:new', { chatId: senderUsername, message: newMessage });
-                // Wyślij alert
                 io.to(recipientSocketId).emit('alert:new', {
                     title: `Nowa wiadomość od ${senderUsername}`,
                     message: content,
                     type: 'message',
                     from: senderUsername
                 });
-            } else {
-                console.log(`   ⚠️ Recipient ${to} is offline`);
             }
 
         } else {
@@ -600,12 +631,14 @@ io.on('connection', (socket) => {
         // Tutaj logika reakcji powinna być solidniejsza co do chatId, ale zostawiamy v2/react poprawione
     });
 
-    socket.on('message:react', ({ messageId, emoji, chatId }) => {
+    socket.on('message:react', ({ messageId, emoji, chatId }) => {  // chatId tutaj to activeChatId z klienta (np. 'general' lub username)
         const senderUsername = onlineUsers.get(socket.id);
         if (!senderUsername) return;
 
         let dbChatId = 'general';
-        if (chatId !== 'general') {
+        if (chatId.startsWith('group_')) {
+            dbChatId = chatId;
+        } else if (chatId !== 'general') {
             const usernames = [senderUsername, chatId].sort();
             dbChatId = usernames.join('-');
         }
@@ -617,52 +650,102 @@ io.on('connection', (socket) => {
 
             if (dbChatId === 'general') {
                 io.emit('message:updated', { chatId: 'general', message: updatedMessage });
+            } else if (dbChatId.startsWith('group_')) {
+                // Grupa
+                const group = db.getGroup(dbChatId);
+                if (group) {
+                    group.members.forEach(member => {
+                        const socketId = getSocketIdByUsername(member);
+                        if (socketId) {
+                            io.to(socketId).emit('message:updated', { chatId: dbChatId, message: updatedMessage });
+                        }
+                    });
+                }
             } else {
+                // Priv
                 const [u1, u2] = dbChatId.split('-');
                 const socket1 = getSocketIdByUsername(u1);
                 const socket2 = getSocketIdByUsername(u2);
 
                 if (socket1) io.to(socket1).emit('message:updated', { chatId: u2 === u1 ? u1 : (u1 === senderUsername ? u2 : u1), message: updatedMessage });
-                // wait, logic for chatId in emit: 
-                // Klient u1 oczekuje wiadomości w czacie z u2.
-                // Klient u2 oczekuje wiadomości w czacie z u1.
-                if (socket1) io.to(socket1).emit('message:updated', { chatId: u1 === senderUsername ? (u2) : (u2), message: updatedMessage });
-                // To logic is tricky. Let's simplify:
-                // If I am sender(u1), I see chat with u2. update is in chat u2.
-                // If I am receiver(u2), I see chat with u1. update is in chat u1.
 
-                if (socket1) io.to(socket1).emit('message:updated', { chatId: u1 === senderUsername ? u2 : u2, message: updatedMessage }); // Fix logic below properly
-
-                // Correct logic:
-                // User A (sender) chats with User B. chatId for A is "UserB".
-                // User B chats with User A. chatId for B is "UserA".
-
-                const s1Name = onlineUsers.get(socket1 || '');
-                const s2Name = onlineUsers.get(socket2 || '');
-
-                if (socket1 && s1Name) {
-                    const chatTarget = s1Name === u1 ? u2 : u1;
-                    io.to(socket1).emit('message:updated', { chatId: chatTarget, message: updatedMessage });
+                // Logic fix for private chat:
+                if (socket1) {
+                    const chatTarget = u1 === senderUsername ? u2 : u2; // Sender sees chat with u2 (if u1==sender) -- wait, logic is: chatId is the OTHER PERSON username.
+                    // u1 is user. If u1 is sender, he is looking at chat "u2".
+                    // If u1 is NOT sender (is u2), he is looking at chat "u1".
+                    // BUT here we process sockets independently.
                 }
-                if (socket2 && s2Name) {
-                    const chatTarget = s2Name === u1 ? u2 : u1;
-                    io.to(socket2).emit('message:updated', { chatId: chatTarget, message: updatedMessage });
+
+                // Simply:
+                // For user u1, the chat ID is u2.
+                // For user u2, the chat ID is u1.
+
+                if (socket1) { // User u1
+                    const target = u1 === u1 ? u2 : u1; // u2
+                    io.to(socket1).emit('message:updated', { chatId: u2, message: updatedMessage });
+                }
+                if (socket2) { // User u2
+                    const target = u2 === u2 ? u1 : u2; // u1
+                    io.to(socket2).emit('message:updated', { chatId: u1, message: updatedMessage });
                 }
             }
         }
     });
 
+
+
     socket.on('typing:start', ({ to }) => {
         const username = onlineUsers.get(socket.id);
         if (!username) return;
 
-        if (to && to !== 'general') {
+        if (to && to.startsWith('group_')) {
+            const group = db.getGroup(to);
+            if (group) {
+                group.members.forEach(member => {
+                    if (member !== username) {
+                        const socketId = getSocketIdByUsername(member);
+                        if (socketId) {
+                            io.to(socketId).emit('typing:user', { username, isTyping: true, chatId: to });
+                        }
+                    }
+                });
+            }
+        } else if (to && to !== 'general') {
             const recipientSocketId = getSocketIdByUsername(to);
             if (recipientSocketId) {
                 io.to(recipientSocketId).emit('typing:user', { username, isTyping: true, chatId: username });
             }
-        } else {
+        } else if (to === 'general') {
             socket.broadcast.emit('typing:user', { username, isTyping: true, chatId: 'general' });
+        }
+    });
+
+    // Endpoint tworzenia grupy
+    app.post('/api/groups/create', (req, res) => {
+        const { name, members, createdBy } = req.body; // members: [username1, username2]
+
+        if (!name || !createdBy) {
+            return res.status(400).json({ success: false, message: 'Nazwa grupy i twórca są wymagane' });
+        }
+
+        const membersList = members || [];
+        const result = db.createGroup(name, createdBy, membersList);
+
+        if (result.success) {
+            // Powiadom członków grupy o nowej grupie
+            const group = result.group;
+            group.members.forEach(member => {
+                // Find socket for member using the helper (we need access to getSocketIdByUsername, but it's inside io.on)
+                // We can iterate onlineUsers map
+                const socketId = Array.from(onlineUsers.entries()).find(([_, name]) => name === member)?.[0];
+                if (socketId) {
+                    io.to(socketId).emit('group:created', group);
+                }
+            });
+            res.json(result);
+        } else {
+            res.status(400).json(result);
         }
     });
 
@@ -670,12 +753,24 @@ io.on('connection', (socket) => {
         const username = onlineUsers.get(socket.id);
         if (!username) return;
 
-        if (to && to !== 'general') {
+        if (to && to.startsWith('group_')) {
+            const group = db.getGroup(to);
+            if (group) {
+                group.members.forEach(member => {
+                    if (member !== username) {
+                        const socketId = getSocketIdByUsername(member);
+                        if (socketId) {
+                            io.to(socketId).emit('typing:user', { username, isTyping: false, chatId: to });
+                        }
+                    }
+                });
+            }
+        } else if (to && to !== 'general') {
             const recipientSocketId = getSocketIdByUsername(to);
             if (recipientSocketId) {
                 io.to(recipientSocketId).emit('typing:user', { username, isTyping: false, chatId: username });
             }
-        } else {
+        } else if (to === 'general') {
             socket.broadcast.emit('typing:user', { username, isTyping: false, chatId: 'general' });
         }
     });

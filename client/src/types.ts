@@ -36,3 +36,12 @@ export interface ChatSession {
     unreadCount: number;
     lastMessage?: Message;
 }
+
+export interface Group {
+    id: string;
+    name: string;
+    members: string[]; // usernames
+    createdBy: string;
+    createdAt: string;
+    avatar: string;
+}

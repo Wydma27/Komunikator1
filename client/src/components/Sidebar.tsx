@@ -2,11 +2,12 @@ import { useState } from 'react';
 import './Sidebar.css';
 import { formatDistanceToNow } from 'date-fns';
 import { pl } from 'date-fns/locale/pl';
-import type { User, Message } from '../types';
+import type { User, Message, Group } from '../types';
 
 interface SidebarProps {
     users: User[];
     currentUser: User;
+    groups: Group[];
     isConnected: boolean;
     onLogout: () => void;
     onThemeToggle: () => void;
@@ -16,12 +17,14 @@ interface SidebarProps {
     onSelectChat: (chatId: string) => void;
     onAddFriend: (friendUsername: string) => void;
     onRespondToRequest: (fromUsername: string, action: 'accept' | 'reject') => void;
+    onCreateGroup: (name: string, members: string[]) => void;
     chats: Record<string, Message[]>;
 }
 
 function Sidebar({
     users,
     currentUser,
+    groups,
     isConnected,
     onLogout,
     onThemeToggle,
@@ -31,9 +34,14 @@ function Sidebar({
     onSelectChat,
     onAddFriend,
     onRespondToRequest,
+    onCreateGroup,
     chats
 }: SidebarProps) {
     const [searchQuery, setSearchQuery] = useState('');
+    const [showGroupModal, setShowGroupModal] = useState(false);
+    const [newGroupName, setNewGroupName] = useState('');
+    const [selectedGroupMembers, setSelectedGroupMembers] = useState<string[]>([]);
+
 
     const otherUsers = users.filter(u => u.username !== currentUser.username);
 
@@ -252,9 +260,95 @@ function Sidebar({
                                 </div>
                             )}
                         </div>
+
+                        {/* Grupy */}
+                        <div className="section-header" style={{ marginTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <h3>Grupy ({groups ? groups.length : 0})</h3>
+                            <button className="icon-btn" onClick={() => setShowGroupModal(true)} title="Utwórz grupę" style={{ width: '24px', height: '24px', fontSize: '16px' }}>+</button>
+                        </div>
+                        <div className="users-list">
+                            {groups && groups.map(group => (
+                                <div key={group.id} className={`user-item ${activeChatId === group.id ? 'active' : ''}`} onClick={() => onSelectChat(group.id)}>
+                                    <div className="user-avatar-container">
+                                        <div className="user-avatar" style={{ fontSize: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--accent-color)' }}>👥</div>
+                                    </div>
+                                    <div className="user-details">
+                                        <h4>{group.name}</h4>
+                                        <div className="user-last-message">
+                                            {getLastMessage(group.id) || <span style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>Brak wiadomości</span>}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </>
                 )}
             </div>
+
+            {/* Modal tworzenia grupy */}
+            {showGroupModal && (
+                <div className="modal-overlay" onClick={() => setShowGroupModal(false)}>
+                    <div className="modal-content" onClick={e => e.stopPropagation()}>
+                        <div className="modal-header">
+                            <h2>Utwórz grupę</h2>
+                            <button className="close-button" onClick={() => setShowGroupModal(false)}>✕</button>
+                        </div>
+                        <div className="modal-body">
+                            <input
+                                type="text"
+                                placeholder="Nazwa grupy"
+                                value={newGroupName}
+                                onChange={e => setNewGroupName(e.target.value)}
+                                style={{ width: '100%', marginBottom: '15px' }}
+                            />
+                            <h4>Wybierz uczestników:</h4>
+                            <div className="members-select-list" style={{ maxHeight: '200px', overflowY: 'auto', border: '1px solid var(--border-color)', borderRadius: '8px', padding: '5px' }}>
+                                {friendsAndChats.length > 0 ? (
+                                    friendsAndChats.map(friend => (
+                                        <div key={friend.username}
+                                            className={`user-item ${selectedGroupMembers.includes(friend.username) ? 'selected' : ''}`}
+                                            onClick={() => {
+                                                if (selectedGroupMembers.includes(friend.username)) {
+                                                    setSelectedGroupMembers(prev => prev.filter(u => u !== friend.username));
+                                                } else {
+                                                    setSelectedGroupMembers(prev => [...prev, friend.username]);
+                                                }
+                                            }}
+                                            style={{ backgroundColor: selectedGroupMembers.includes(friend.username) ? 'var(--hover-bg)' : 'transparent', cursor: 'pointer' }}
+                                        >
+                                            <div className="user-avatar-container">
+                                                {isEmoji(friend.avatar) ? (
+                                                    <div className="user-avatar" style={{ fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '30px', height: '30px' }}>{friend.avatar}</div>
+                                                ) : (
+                                                    <img src={friend.avatar} alt={friend.username} className="user-avatar" style={{ width: '30px', height: '30px' }} />
+                                                )}
+                                            </div>
+                                            <span>{friend.username}</span>
+                                            {selectedGroupMembers.includes(friend.username) && <span style={{ marginLeft: 'auto', color: 'var(--accent-color)' }}>✓</span>}
+                                        </div>
+                                    ))
+                                ) : (
+                                    <p style={{ padding: '10px', fontSize: '13px', color: 'var(--text-secondary)' }}>Brak znajomych do dodania</p>
+                                )}
+                            </div>
+                            <button
+                                className="save-button"
+                                style={{ marginTop: '15px', width: '100%' }}
+                                onClick={() => {
+                                    if (newGroupName && selectedGroupMembers.length > 0) {
+                                        onCreateGroup(newGroupName, selectedGroupMembers);
+                                        setShowGroupModal(false);
+                                        setNewGroupName('');
+                                        setSelectedGroupMembers([]);
+                                    }
+                                }}
+                            >
+                                Utwórz grupę
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             <div className="sidebar-footer">
                 <button className="theme-toggle" onClick={onThemeToggle}>

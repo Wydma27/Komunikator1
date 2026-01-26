@@ -10,7 +10,8 @@ function initDatabase() {
             users: [],
             messages: {
                 general: []
-            }
+            },
+            groups: []
         };
         fs.writeFileSync(DB_PATH, JSON.stringify(initialData, null, 2));
     } else {
@@ -23,6 +24,10 @@ function initDatabase() {
                 changed = true;
             }
         });
+        if (!db.groups) {
+            db.groups = [];
+            changed = true;
+        }
         if (changed) writeDatabase(db);
     }
 }
@@ -299,5 +304,50 @@ module.exports = {
     getAllUsers,
     sendFriendRequest,
     handleFriendRequest,
-    cleanupOldMessages
+    cleanupOldMessages,
+    createGroup,
+    getUserGroups,
+    getGroup
 };
+
+// Utwórz grupę
+function createGroup(name, creatorUsername, membersUsernames) {
+    const db = readDatabase();
+
+    // Add creator to members if not present
+    const members = [...new Set([creatorUsername, ...membersUsernames])];
+
+    const newGroup = {
+        id: 'group_' + Date.now().toString(),
+        name,
+        members,
+        createdBy: creatorUsername,
+        createdAt: new Date().toISOString(),
+        avatar: '' // Optional group avatar
+    };
+
+    if (!db.groups) db.groups = [];
+    db.groups.push(newGroup);
+
+    // Initialize messages for this group
+    if (!db.messages[newGroup.id]) {
+        db.messages[newGroup.id] = [];
+    }
+
+    writeDatabase(db);
+    return { success: true, group: newGroup };
+}
+
+// Pobierz grupy użytkownika
+function getUserGroups(username) {
+    const db = readDatabase();
+    if (!db.groups) return [];
+    return db.groups.filter(g => g.members.includes(username));
+}
+
+// Znajdź grupę po ID
+function getGroup(groupId) {
+    const db = readDatabase();
+    if (!db.groups) return null;
+    return db.groups.find(g => g.id === groupId);
+}
