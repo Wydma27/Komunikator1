@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './ProfileEditor.css';
 
 interface ProfileEditorProps {
@@ -6,18 +6,43 @@ interface ProfileEditorProps {
     currentAvatar: string;
     onClose: () => void;
     onSave: (newUsername: string, newAvatar: string) => void;
+    serverUrl: string;
 }
 
-export default function ProfileEditor({ currentUsername, currentAvatar, onClose, onSave }: ProfileEditorProps) {
+export default function ProfileEditor({ currentUsername, currentAvatar, onClose, onSave, serverUrl }: ProfileEditorProps) {
     const [username, setUsername] = useState(currentUsername);
     const [avatar, setAvatar] = useState(currentAvatar);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     const avatarOptions = [
         '😀', '😎', '🤖', '👨‍💻', '👩‍💻', '🦊', '🐱', '🐶', '🐼', '🦁',
         '🎮', '🎨', '🎭', '🎪', '🎯', '⚡', '🔥', '💎', '🌟', '✨'
     ];
+
+    const isEmoji = (str?: string) => !str?.startsWith('http') && !str?.startsWith('data:');
+
+    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        // Limit size to 2MB for profile picture
+        if (file.size > 2 * 1024 * 1024) {
+            setError('Zdjęcie jest za duże. Maksymalny rozmiar to 2MB.');
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const base64 = event.target?.result as string;
+            setAvatar(base64);
+        };
+        reader.readAsDataURL(file);
+
+        // Reset input
+        e.target.value = '';
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -36,12 +61,15 @@ export default function ProfileEditor({ currentUsername, currentAvatar, onClose,
         setLoading(true);
 
         try {
-            const response = await fetch('http://localhost:3005/api/user/update', {
+            const response = await fetch(`${serverUrl}/api/user/update`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     username: currentUsername,
-                    updates: { username: username.trim(), avatar }
+                    updates: {
+                        username: username.trim() !== currentUsername ? username.trim() : undefined,
+                        avatar: avatar !== currentAvatar ? avatar : undefined
+                    }
                 })
             });
 
@@ -72,6 +100,31 @@ export default function ProfileEditor({ currentUsername, currentAvatar, onClose,
                 <form onSubmit={handleSubmit}>
                     {error && <div className="error-message">{error}</div>}
 
+                    <div className="profile-preview-section">
+                        <div className="current-avatar-preview">
+                            {isEmoji(avatar) ? (
+                                <div className="avatar-preview-emoji">{avatar}</div>
+                            ) : (
+                                <img src={avatar} alt="Podgląd" className="avatar-preview-img" />
+                            )}
+                        </div>
+                        <button
+                            type="button"
+                            className="upload-photo-btn"
+                            onClick={() => fileInputRef.current?.click()}
+                            disabled={loading}
+                        >
+                            📷 Zmień zdjęcie urządzenia
+                        </button>
+                        <input
+                            type="file"
+                            ref={fileInputRef}
+                            style={{ display: 'none' }}
+                            accept="image/*"
+                            onChange={handleImageUpload}
+                        />
+                    </div>
+
                     <div className="form-group">
                         <label htmlFor="username">Nazwa użytkownika</label>
                         <input
@@ -85,7 +138,7 @@ export default function ProfileEditor({ currentUsername, currentAvatar, onClose,
                     </div>
 
                     <div className="form-group">
-                        <label>Wybierz avatar</label>
+                        <label>Wybierz emoji lub wgraj własne zdjęcie</label>
                         <div className="avatar-selector">
                             {avatarOptions.map((emoji) => (
                                 <button

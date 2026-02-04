@@ -7,7 +7,7 @@ import LoginScreen from './components/LoginScreen';
 import ProfileEditor from './components/ProfileEditor';
 import type { User, Message, Group } from './types';
 
-const SOCKET_URL = 'http://localhost:8000';
+const SOCKET_URL = `http://${window.location.hostname}:8000`;
 
 function App() {
   const [socket, setSocket] = useState<Socket | null>(null);
@@ -90,7 +90,11 @@ function App() {
 
     newSocket.on('group:created', (newGroup: Group) => {
       setGroups(prev => [...prev, newGroup]);
-      setAlert({ title: 'Nowa grupa', message: `Zostałeś dodany do grupy ${newGroup.name}`, visible: true });
+      if (newGroup.createdBy === currentUser.username) {
+        setActiveChatId(newGroup.id);
+      } else {
+        setAlert({ title: 'Nowa grupa', message: `Zostałeś dodany do grupy ${newGroup.name}`, visible: true });
+      }
     });
 
     newSocket.on('users:online', (onlineUsersList: User[]) => {
@@ -264,6 +268,7 @@ function App() {
 
   const handleCreateGroup = async (name: string, members: string[]) => {
     if (!currentUser) return;
+    console.log('🚀 Wysyłanie żądania utworzenia grupy:', { name, members, createdBy: currentUser.username });
     try {
       const response = await fetch(`${SOCKET_URL}/api/groups/create`, {
         method: 'POST',
@@ -341,12 +346,13 @@ function App() {
         </div>
       )}
 
-      {showProfileEditor && (
+      {showProfileEditor && currentUser && (
         <ProfileEditor
           currentUsername={currentUser.username}
           currentAvatar={currentUser.avatar}
           onClose={() => setShowProfileEditor(false)}
           onSave={handleProfileSave}
+          serverUrl={SOCKET_URL}
         />
       )}
     </div>

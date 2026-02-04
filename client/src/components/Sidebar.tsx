@@ -42,6 +42,7 @@ function Sidebar({
     const [showNotifications, setShowNotifications] = useState(false);
     const [newGroupName, setNewGroupName] = useState('');
     const [selectedGroupMembers, setSelectedGroupMembers] = useState<string[]>([]);
+    const [groupModalStep, setGroupModalStep] = useState(1); // 1: members, 2: name
 
 
     const otherUsers = users.filter(u => u.username !== currentUser.username);
@@ -77,8 +78,6 @@ function Sidebar({
         user.username.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    console.log('🔍 Search:', searchQuery, '| Total users:', users.length, '| Other users:', otherUsers.length, '| Results:', searchResults.length);
-
     // Helper do ostatniej wiadomości
     const getLastMessage = (username: string) => {
         const msgs = chats[username];
@@ -99,6 +98,24 @@ function Sidebar({
     };
 
     const isEmoji = (str?: string) => !str?.startsWith('http') && !str?.startsWith('data:');
+
+    const handleCreateGroupSubmit = () => {
+        if (newGroupName.trim() && selectedGroupMembers.length > 0) {
+            onCreateGroup(newGroupName.trim(), selectedGroupMembers);
+            setShowGroupModal(false);
+            setNewGroupName('');
+            setSelectedGroupMembers([]);
+            setGroupModalStep(1);
+        }
+    };
+
+    const toggleMemberSelection = (username: string) => {
+        if (selectedGroupMembers.includes(username)) {
+            setSelectedGroupMembers(prev => prev.filter(u => u !== username));
+        } else {
+            setSelectedGroupMembers(prev => [...prev, username]);
+        }
+    };
 
     return (
         <div className="sidebar">
@@ -188,9 +205,6 @@ function Sidebar({
 
             <div className="users-section">
 
-
-
-                {/* General chat removed */}
 
                 {searchQuery ? (
                     <>
@@ -284,7 +298,7 @@ function Sidebar({
                         {/* Grupy */}
                         <div className="section-header" style={{ marginTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <h3>Grupy ({groups ? groups.length : 0})</h3>
-                            <button className="icon-btn" onClick={() => setShowGroupModal(true)} title="Utwórz grupę" style={{ width: '24px', height: '24px', fontSize: '16px' }}>+</button>
+                            <button className="icon-btn" onClick={() => { setShowGroupModal(true); setGroupModalStep(1); }} title="Utwórz grupę" style={{ width: '24px', height: '24px', fontSize: '16px' }}>+</button>
                         </div>
                         <div className="users-list">
                             {groups && groups.map(group => (
@@ -310,62 +324,76 @@ function Sidebar({
                 <div className="modal-overlay" onClick={() => setShowGroupModal(false)}>
                     <div className="modal-content" onClick={e => e.stopPropagation()}>
                         <div className="modal-header">
-                            <h2>Utwórz grupę</h2>
+                            <h2>{groupModalStep === 1 ? 'Wybierz uczestników' : 'Nadaj nazwę grupie'}</h2>
                             <button className="close-button" onClick={() => setShowGroupModal(false)}>✕</button>
                         </div>
                         <div className="modal-body">
-                            {/* ... existing modal body ... */}
-                            <input
-                                type="text"
-                                placeholder="Nazwa grupy"
-                                value={newGroupName}
-                                onChange={e => setNewGroupName(e.target.value)}
-                                style={{ width: '100%', marginBottom: '15px' }}
-                            />
-                            <h4>Wybierz uczestników:</h4>
-                            <div className="members-select-list" style={{ maxHeight: '200px', overflowY: 'auto', border: '1px solid var(--border-color)', borderRadius: '8px', padding: '5px' }}>
-                                {friendsAndChats.length > 0 ? (
-                                    friendsAndChats.map(friend => (
-                                        <div key={friend.username}
-                                            className={`user-item ${selectedGroupMembers.includes(friend.username) ? 'selected' : ''}`}
-                                            onClick={() => {
-                                                if (selectedGroupMembers.includes(friend.username)) {
-                                                    setSelectedGroupMembers(prev => prev.filter(u => u !== friend.username));
-                                                } else {
-                                                    setSelectedGroupMembers(prev => [...prev, friend.username]);
-                                                }
-                                            }}
-                                            style={{ backgroundColor: selectedGroupMembers.includes(friend.username) ? 'var(--hover-bg)' : 'transparent', cursor: 'pointer' }}
+                            {groupModalStep === 1 ? (
+                                <>
+                                    <div className="members-select-list" style={{ maxHeight: '300px', overflowY: 'auto', border: '1px solid var(--border-color)', borderRadius: '8px', padding: '5px' }}>
+                                        {friendsAndChats.length > 0 ? (
+                                            friendsAndChats.map(friend => (
+                                                <div key={friend.username}
+                                                    className={`user-item ${selectedGroupMembers.includes(friend.username) ? 'selected' : ''}`}
+                                                    onClick={() => toggleMemberSelection(friend.username)}
+                                                    style={{ backgroundColor: selectedGroupMembers.includes(friend.username) ? 'var(--hover-bg)' : 'transparent', cursor: 'pointer' }}
+                                                >
+                                                    <div className="user-avatar-container">
+                                                        {isEmoji(friend.avatar) ? (
+                                                            <div className="user-avatar" style={{ fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '30px', height: '30px' }}>{friend.avatar}</div>
+                                                        ) : (
+                                                            <img src={friend.avatar} alt={friend.username} className="user-avatar" style={{ width: '30px', height: '30px' }} />
+                                                        )}
+                                                    </div>
+                                                    <span>{friend.username}</span>
+                                                    {selectedGroupMembers.includes(friend.username) && <span style={{ marginLeft: 'auto', color: 'var(--accent-color)' }}>✓</span>}
+                                                </div>
+                                            ))
+                                        ) : (
+                                            <p style={{ padding: '10px', fontSize: '13px', color: 'var(--text-secondary)' }}>Brak znajomych do dodania</p>
+                                        )}
+                                    </div>
+                                    <button
+                                        className="save-button"
+                                        style={{ marginTop: '15px', width: '100%' }}
+                                        disabled={selectedGroupMembers.length === 0}
+                                        onClick={() => setGroupModalStep(2)}
+                                    >
+                                        Dalej
+                                    </button>
+                                </>
+                            ) : (
+                                <>
+                                    <input
+                                        type="text"
+                                        placeholder="Nazwa grupy (np. Zespół, Znajomi)"
+                                        value={newGroupName}
+                                        onChange={e => setNewGroupName(e.target.value)}
+                                        autoFocus
+                                        style={{ width: '100%', marginBottom: '15px', padding: '12px', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-app)', color: 'var(--text-primary)' }}
+                                    />
+                                    <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '15px' }}>
+                                        Wybrani uczestnicy: {selectedGroupMembers.join(', ')}
+                                    </p>
+                                    <div style={{ display: 'flex', gap: '10px' }}>
+                                        <button
+                                            className="cancel-btn"
+                                            style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid var(--border-color)', background: 'transparent', color: 'var(--text-primary)', cursor: 'pointer' }}
+                                            onClick={() => setGroupModalStep(1)}
                                         >
-                                            <div className="user-avatar-container">
-                                                {isEmoji(friend.avatar) ? (
-                                                    <div className="user-avatar" style={{ fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '30px', height: '30px' }}>{friend.avatar}</div>
-                                                ) : (
-                                                    <img src={friend.avatar} alt={friend.username} className="user-avatar" style={{ width: '30px', height: '30px' }} />
-                                                )}
-                                            </div>
-                                            <span>{friend.username}</span>
-                                            {selectedGroupMembers.includes(friend.username) && <span style={{ marginLeft: 'auto', color: 'var(--accent-color)' }}>✓</span>}
-                                        </div>
-                                    ))
-                                ) : (
-                                    <p style={{ padding: '10px', fontSize: '13px', color: 'var(--text-secondary)' }}>Brak znajomych do dodania</p>
-                                )}
-                            </div>
-                            <button
-                                className="save-button"
-                                style={{ marginTop: '15px', width: '100%' }}
-                                onClick={() => {
-                                    if (newGroupName && selectedGroupMembers.length > 0) {
-                                        onCreateGroup(newGroupName, selectedGroupMembers);
-                                        setShowGroupModal(false);
-                                        setNewGroupName('');
-                                        setSelectedGroupMembers([]);
-                                    }
-                                }}
-                            >
-                                Utwórz grupę
-                            </button>
+                                            Wstecz
+                                        </button>
+                                        <button
+                                            className="save-button"
+                                            style={{ flex: 2 }}
+                                            disabled={!newGroupName.trim()}
+                                            onClick={handleCreateGroupSubmit}
+                                        >
+                                            Utwórz grupę
+                                        </button>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>

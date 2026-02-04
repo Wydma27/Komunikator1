@@ -85,6 +85,55 @@ app.post('/api/user/update', (req, res) => {
 
 
 
+function getSocketIdByUsername(username) {
+    return Array.from(onlineUsers.entries())
+        .find(([_, name]) => name === username)?.[0];
+}
+
+// Endpoint tworzenia grupy
+app.post('/api/groups/create', (req, res) => {
+    console.log('📩 Otrzymano żądanie utworzenia grupy:', req.body);
+    const { name, members, createdBy } = req.body; // members: [username1, username2]
+
+    if (!name || !createdBy) {
+        return res.status(400).json({ success: false, message: 'Nazwa grupy i twórca są wymagane' });
+    }
+
+    const membersList = members || [];
+    const result = db.createGroup(name, createdBy, membersList);
+
+    if (result.success) {
+        // Powiadom członków grupy o nowej grupie
+        const group = result.group;
+        group.members.forEach(member => {
+            const socketId = getSocketIdByUsername(member);
+            if (socketId) {
+                io.to(socketId).emit('group:created', group);
+            }
+        });
+        // Dodaj powitalną wiadomość systemową
+        const systemMessage = {
+            id: 'msg_' + Date.now(),
+            sender: {
+                id: 'system',
+                username: 'System',
+                avatar: '🤖'
+            },
+            content: `Grupa "${name}" została utworzona przez ${createdBy}`,
+            timestamp: new Date().toISOString(),
+            type: 'text',
+            reactions: {},
+            readBy: [createdBy]
+        };
+        db.saveMessage(group.id, systemMessage);
+
+        console.log(`✅ Group "${name}" created successfully by ${createdBy}`);
+        res.json(result);
+    } else {
+        res.status(400).json(result);
+    }
+});
+
 const PORT = process.env.PORT || 8000;
 server.listen(PORT, '0.0.0.0', () => {
     // Uruchom cleanup co godzinę
@@ -95,13 +144,9 @@ server.listen(PORT, '0.0.0.0', () => {
     db.cleanupOldMessages();
 });
 
+
 io.on('connection', (socket) => {
     console.log(`Użytkownik połączony: ${socket.id}`);
-
-    const getSocketIdByUsername = (username) => {
-        return Array.from(onlineUsers.entries())
-            .find(([_, name]) => name === username)?.[0];
-    };
 
     socket.on('user:login', (userData) => {
         const { username } = userData;
@@ -460,33 +505,6 @@ io.on('connection', (socket) => {
         }
     });
 
-    // Endpoint tworzenia grupy
-    app.post('/api/groups/create', (req, res) => {
-        const { name, members, createdBy } = req.body; // members: [username1, username2]
-
-        if (!name || !createdBy) {
-            return res.status(400).json({ success: false, message: 'Nazwa grupy i twórca są wymagane' });
-        }
-
-        const membersList = members || [];
-        const result = db.createGroup(name, createdBy, membersList);
-
-        if (result.success) {
-            // Powiadom członków grupy o nowej grupie
-            const group = result.group;
-            group.members.forEach(member => {
-                // Find socket for member using the helper (we need access to getSocketIdByUsername, but it's inside io.on)
-                // We can iterate onlineUsers map
-                const socketId = Array.from(onlineUsers.entries()).find(([_, name]) => name === member)?.[0];
-                if (socketId) {
-                    io.to(socketId).emit('group:created', group);
-                }
-            });
-            res.json(result);
-        } else {
-            res.status(400).json(result);
-        }
-    });
 
     socket.on('typing:stop', ({ to }) => {
         const username = onlineUsers.get(socket.id);
