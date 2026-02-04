@@ -317,9 +317,10 @@ io.on('connection', (socket) => {
                         io.to(socketId).emit('message:new', { chatId: to, message: newMessage });
 
                         if (member !== senderUsername) {
+                            const notificationContent = type === 'image' ? '📸 Wysłano zdjęcie' : (type === 'gif' ? '🎬 Wysłano GIF' : content);
                             io.to(socketId).emit('alert:new', {
                                 title: `Nowa wiadomość w grupie ${group.name}`,
-                                message: `${senderUsername}: ${content}`,
+                                message: `${senderUsername}: ${notificationContent}`,
                                 type: 'message',
                                 from: to
                             });
@@ -345,11 +346,12 @@ io.on('connection', (socket) => {
             // Wyślij do odbiorcy
             const recipientSocketId = getSocketIdByUsername(to);
             if (recipientSocketId) {
+                const notificationContent = type === 'image' ? '📸 Wysłano zdjęcie' : (type === 'gif' ? '🎬 Wysłano GIF' : content);
                 console.log(`   Sending to recipient (${to}) with chatId: ${senderUsername}`);
                 io.to(recipientSocketId).emit('message:new', { chatId: senderUsername, message: newMessage });
                 io.to(recipientSocketId).emit('alert:new', {
                     title: `Nowa wiadomość od ${senderUsername}`,
-                    message: content,
+                    message: notificationContent,
                     type: 'message',
                     from: senderUsername
                 });

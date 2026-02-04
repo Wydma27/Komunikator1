@@ -7,7 +7,7 @@ import LoginScreen from './components/LoginScreen';
 import ProfileEditor from './components/ProfileEditor';
 import type { User, Message, Group } from './types';
 
-const SOCKET_URL = 'http://10.40.31.153:8000';
+const SOCKET_URL = 'http://localhost:8000';
 
 function App() {
   const [socket, setSocket] = useState<Socket | null>(null);

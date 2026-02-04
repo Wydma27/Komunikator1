@@ -18,7 +18,12 @@
         "Antek123"
       ],
       "createdAt": "2026-01-19T06:43:49.893Z",
-      "friendRequests": []
+      "friendRequests": [
+        {
+          "from": "An2an",
+          "timestamp": "2026-02-04T09:01:11.440Z"
+        }
+      ]
     },
     {
       "id": "1768805114536",
@@ -204,10 +209,23 @@
       "password": "Haslo123",
       "avatar": "🤖",
       "friends": [
-        "Wydma1"
+        "Wydma1",
+        "An2an"
       ],
       "friendRequests": [],
       "createdAt": "2026-01-26T07:58:43.380Z"
+    },
+    {
+      "id": "1770195658432",
+      "username": "An2an",
+      "email": "mail1233@gmail.com",
+      "password": "Haslo123",
+      "avatar": "🦁",
+      "friends": [
+        "Antek123"
+      ],
+      "friendRequests": [],
+      "createdAt": "2026-02-04T09:00:58.432Z"
     }
   ],
   "messages": {
@@ -222,371 +240,69 @@
     "Wydma1-patryk1": [],
     "Antek123-Wydma1": [
       {
-        "id": "17694210039890.7431048074443838",
-        "content": "elo",
-        "sender": {
-          "id": "1768805029893",
-          "username": "Wydma1",
-          "avatar": "😎"
-        },
-        "timestamp": "2026-01-26T09:50:03.989Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "4qM-tgEckBWKUZExAAAH"
-        ]
-      },
-      {
-        "id": "17694210039990.9025736191592926",
-        "content": "elo",
-        "sender": {
-          "id": "1768805029893",
-          "username": "Wydma1",
-          "avatar": "😎"
-        },
-        "timestamp": "2026-01-26T09:50:03.999Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "4qM-tgEckBWKUZExAAAH"
-        ]
-      },
-      {
-        "id": "17694210305000.591824866225497",
-        "content": "elo żelo",
+        "id": "17701956355840.6221697184095525",
+        "content": "Siema",
         "sender": {
           "id": "1769414323380",
           "username": "Antek123",
           "avatar": "🤖"
         },
-        "timestamp": "2026-01-26T09:50:30.501Z",
+        "timestamp": "2026-02-04T09:00:35.584Z",
         "type": "text",
         "replyTo": null,
         "reactions": {},
         "readBy": [
-          "bgBOGtrrtl-n28UrAAAJ"
+          "tm9V14wle5DfnfLMAAAB"
         ]
-      },
+      }
+    ],
+    "An2an-Antek123": [
       {
-        "id": "17694210305060.815130785170511",
-        "content": "elo żelo",
+        "id": "17701958731690.7855792535279809",
+        "content": "Siema",
         "sender": {
           "id": "1769414323380",
           "username": "Antek123",
           "avatar": "🤖"
         },
-        "timestamp": "2026-01-26T09:50:30.507Z",
+        "timestamp": "2026-02-04T09:04:33.170Z",
         "type": "text",
         "replyTo": null,
         "reactions": {},
         "readBy": [
-          "bgBOGtrrtl-n28UrAAAJ"
+          "MEDBbZlg-kIMPrkMAAAF"
         ]
       },
       {
-        "id": "17694210344340.7333935483224145",
-        "content": "https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif",
+        "id": "17701958828560.605604148160293",
+        "content": "https://media.giphy.com/media/g9582DNuQppxC/giphy.gif",
         "sender": {
-          "id": "1768805029893",
-          "username": "Wydma1",
-          "avatar": "😎"
+          "id": "1770195658432",
+          "username": "An2an",
+          "avatar": "🦁"
         },
-        "timestamp": "2026-01-26T09:50:34.434Z",
+        "timestamp": "2026-02-04T09:04:42.856Z",
         "type": "gif",
         "replyTo": null,
         "reactions": {},
         "readBy": [
-          "4qM-tgEckBWKUZExAAAH"
+          "HpB6DR90olGPzKQlAAAD"
         ]
       },
       {
-        "id": "17694210344410.6311400879668876",
-        "content": "https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif",
-        "sender": {
-          "id": "1768805029893",
-          "username": "Wydma1",
-          "avatar": "😎"
-        },
-        "timestamp": "2026-01-26T09:50:34.441Z",
-        "type": "gif",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "4qM-tgEckBWKUZExAAAH"
-        ]
-      },
-      {
-        "id": "17694220246690.7218091054341902",
-        "content": "1]",
-        "sender": {
-          "id": "1768805029893",
-          "username": "Wydma1",
-          "avatar": "😎"
-        },
-        "timestamp": "2026-01-26T10:07:04.669Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "itcrIdCgz7qUA4czAAAN"
-        ]
-      },
-      {
-        "id": "17694220246750.7055189226647445",
-        "content": "1]",
-        "sender": {
-          "id": "1768805029893",
-          "username": "Wydma1",
-          "avatar": "😎"
-        },
-        "timestamp": "2026-01-26T10:07:04.675Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "itcrIdCgz7qUA4czAAAN"
-        ]
-      },
-      {
-        "id": "17694221297610.6216437311096941",
-        "content": "1",
-        "sender": {
-          "id": "1768805029893",
-          "username": "Wydma1",
-          "avatar": "😎"
-        },
-        "timestamp": "2026-01-26T10:08:49.761Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "itcrIdCgz7qUA4czAAAN"
-        ]
-      },
-      {
-        "id": "17694221297670.6016078822904438",
-        "content": "1",
-        "sender": {
-          "id": "1768805029893",
-          "username": "Wydma1",
-          "avatar": "😎"
-        },
-        "timestamp": "2026-01-26T10:08:49.767Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "itcrIdCgz7qUA4czAAAN"
-        ]
-      },
-      {
-        "id": "17694221310370.04558575831006029",
-        "content": "1",
-        "sender": {
-          "id": "1768805029893",
-          "username": "Wydma1",
-          "avatar": "😎"
-        },
-        "timestamp": "2026-01-26T10:08:51.038Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "itcrIdCgz7qUA4czAAAN"
-        ]
-      },
-      {
-        "id": "17694221310410.3891811305810242",
-        "content": "1",
-        "sender": {
-          "id": "1768805029893",
-          "username": "Wydma1",
-          "avatar": "😎"
-        },
-        "timestamp": "2026-01-26T10:08:51.041Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "itcrIdCgz7qUA4czAAAN"
-        ]
-      },
-      {
-        "id": "17694221355780.6501258380672856",
-        "content": "cosik",
+        "id": "17701960996140.12183467165551298",
+        "content": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUSEhMWFhUXGBcYGBgXGRgYFxcYGBcWFxcXFxcdHSggHRolHRgYIjEiJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGy0mHyUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLy0tLy4tLS0vLS0tLS0tLS0tLf/AABEIALcBFAMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAEAQIDBQYABwj/xAA/EAACAQMCBAQEBAUDAgUFAAABAhEAAyEEEgUxQVETImGBcZGh8AYUMrFCUsHR4SNi8QdyFUOSsuIWM2OCov/EABkBAAMBAQEAAAAAAAAAAAAAAAABAgMEBf/EAC0RAAICAgIABAQGAwEAAAAAAAABAhEDEiExBBNBUSKBofAyYXGRwdEUsfHh/9oADAMBAAIRAxEAPwD0yKa1PFNJrus5GMa4BSIZpQtSgUOVCSO3U2pAtPW2Kz2Lpka08CpKWpsqhoWlmlFKBUtlUdNKKUJXNAEkwPlUtopRbOFOqI6hRzIA7yI++dTIZEjINQ2aPHJdoSo793aJ9qj1WqCnbvQMYgMYJJMDHsflVHxLXXvF2eEXSSHIDKoByIcxuG2Dic4o7OjB4aU5K/1LFtfyVTuYnJxynkP29KsleRI+led/+NKC/htC/rVWCja0kRES3lBPfI9K0n4f45ut21dIO0AkARuzIgHERmeuM0NHZ4nwMlDaK/s0BNNNK90ZjJGIHftQK8UUObdxdhCht0jYQegbv0yByNJM85YJyXCDK6oRrVJAGZ7ZHKYMdYj51ORVbGcsco9oay1FsqWuqlKjNqyGKYWoimkVamS4gzIDSeCKI200irUydQc2qb4JFEGkiqU2LUh2UoUVLFJtp7CoZFcfWlNNJoAca6myK6kBOwrglTBadWTmaakIt08JTop0UthpDQlOC10U4Cp2GkNilC04Cke4o5nPbE/GKTmWoN9CqtPAoW3rlL7cRyBLDL+aUA5yAJ96KJqHJmjxuPZHduhYnr9zVZrLpZmtkEKQPOwA2zgETVsY+NV+uvIpAO2SeXIz2HqTUt0dHh6vhclVeusrgbd2Qu4DP6cYmB2zGTT9LxEsV/1gpkwp6hfXkev0oTjertiy2D4kExbmQVBJjInHQnrVWr3Nq7Al5lVG2WiqvsmRG47Sp5HIMTEnFO+LPT0Ths0WF38Q6Ul79q1vbKs6iBcZY/Tk7gI/V7ZoN+NC+gti6UMGSVgjmX2lusx05DGeRGr4fp9ZbQ2VZdrMGJm3ctsMlHPNck/MRgzWf41rGVxYAG7ynxGMqFEfoiSxJicRM4pbIvCsUkqvj39PYO4Zwi7qNzXiptkgptIYqNoC3FIjosebty6VpdNwyzaRLfiMT53WWhmYnzMw/iAZpAMwe5rE3eMGwbi3ru/cuy2qIQx/U075hRPXPLoZoPU8aVGS7ZR7bo2yC0swZcqREBDA7kkcxFDt9DnHLkdRdL9DbaniW5fCULu3BN7MNxjG4qJ9c4GKGTTMCyKDuY7iy8mKwpJkjp2/pVdpeI6VdKy6jYblwl9pWGHbAaW5TJ/mgxVfprtziDqlu8ECYyPOwJEuQBtRsAAZicjNO2hpKKevCs1CayHAdwAI2gcsGT0lxIE9q0fCmJtgszMZOXUq3M4IMH/EVkuJcMCMLbSS0Dcssc5khViJPQevertOJLatkteQ4AURAwIORzM03T6OTxGN5ILX1+/YvCRXEVlPzGoLA2/DeZKnO6P1CCwz29hWnssSo3QGgSBkAxkCg8/P4d4kra5HkU0inTXUHORkU0ipDFNK1SZLRERURNTsKjcGtIyM2iPdXbqaRSMhrRNMhkm+kaDUcGlBqhWdmurprqYB9OAof80g/iHSc8pqe24IkHH2K5GzdIcKWuRgeRp0UrK1EFM1NzajNAO0EgEwCQMCcxT2YDmQJxnGewqt43bS9be0WMlSQAJPlzIkROMHoYNKzbFj2kr6Irf4gDWw9u22ZjdIgiOeJ288ifeaD1mtXUoCjW96g9CHBABcIzAdRtIHwPaq7iPEWt3XtEjwRa8hULv2x5nnbJct5Y+nWsxp9M5xehUuAXCtxTcJO9oiGHIkz0gnymMNL1PbxeDilulXqvXv0/X9jVreYhHWBHIR5lLAcycx1j4UTqONXd4ssvlOGMgGCJloOPh7UOlwFGQXB5RG3wypYbcEFnBMRgx2obg98E7xpyzAnntmFAO4SF2846nAqfQrVNOUo9fz1yXX526ii2pLNO7ODtyYM8jg1XcY1zqbZVttzdbKpcUFbjM0BSeYABJMddsZpmu4wqXWu3E2BZYMx2zbIVYOTuIdjgmOcdKzdzjCLfxduJbZxe2hN/iAhdmwmIk7uRM560iYYU+Wvz/V+32jT6bSPvbxQt1QW858oLGSVRQDuALQZgzM8qN1Yts5W3blxtbeDsKyYw2GAj4cxWa4Zx61bs3SwCMJATJYzykwFLGNxM9aS7qRqVQur27VtQ3UW7hiCTA/ThjGORzUN0+eiv8AHk3z0vvq/wDRYcR0RvWWdGUFsjc36sk7XK815zIkElufPHaMKXW6UZQkrfAAhWMwpb1jHIevezfgl59Jcezut27bHYf0tdtorEuonyiMdCck1Qpqb67g5YFeQI8zT5jHwyfixNUoo0wQSfwvi+V7f7NHw02Nr5VXwd18GZcxbYEAAIJE4zjlijNVpdO5tW0CK7GLcMATy8y49AJnqTmsDrOOXHvK917gb/bAZFyRygT0IIHKrPQ/iNxetIwXymHYjaykfxMRJHSY/l96p0aOm9ov5fnRp9XwNFFw3baF/KBcJwAjAEkEDbgEmDGTGIo27qfEI02nZQU2ncoQLc2FWuIsZDCcmMEDuapeJcaW0ltWc3JJKm0QFYZkt/MZEyZ5jBoSyb10NfYrZtC6W2A+GWbavlRonJCifjiOS67MfJm0pP6no2jG8MCrhBu3biNxbHPv0zVdxTVIwOnVgFQCSAzAcoRujZiR2wedZqzqtRqisBrfhhSlpJt+INw3EkDsImBmPWNHf4bZFoOmmtq0kBITccwx3RzkYCmkjDTy5pv/AIx9prl3/wAttsxuG62dpHNYgTMjmSMc60XiHAELgE7j0/qcVluB6pow5IDEFWLT1xmYI7envR2o1IdWFtwWOCcnbETIGSe0R0yBVtGWfHtPX0X3yXX5oHKwQMYznrmp1Mis/oWZVIuMvWQOszJnuSSamXiq2wBkk94nHwFFP0POyxhHpl37UhrO3uLOWG2MgY5xiTRWm4zIh1z9O8U9Wc+yLcimMlQ2tcremY+k1OGFFgRG3TClE7aaRVKRLiDba4ipitMNUpEOJDArqcT8K6tLJoovDzLfwmevz50Qj+WAes+/p99ae9ofOpLVgEHH7+lcazJo69SPTahlGD2z7UU3E2XMTPIR/XtQotnlUj4FNzXSGkl2c3GyA5IVgpgYZWbIJknkoEyQDPTtVZxPxCTcd32n9IUuZJAkugXCYgDPMetT39PvImSsQUA59c/3+FU2l1U3ZtXAgTdFtQIdpHkifIoYRAy3ODg00et4XVraPzC7dhSrvqGZQWUhg5BPWNoJGDtADEcpxioLnGi9q4SbNy2C522iSXYQVAbzBiM/+keycU0T3mQm3bZi3kck7bXPxDtIPQLBxzPLrcajhytsAWVTkwYSJwQAeuAZ9PQ0nI38ymnP/n30ZN+PgSRaLIGhEu/+WxBKsBkhhGDPIU19frCVVZE21JKgN4mFgzMYIPWZBnE1fngaW7ieHc3Wn3C4htghwQ0S8d29ZoTg9ndec2rrLtBVfDHlCnOZwByjnPmPWnsmdXm4tXJLpet/aAV4K15A2q1YC3GkC0vnJMFQctEZ5iABHPI78V3GZLVq3+pNpW6cMzKw2xAK4GSVBE8utaHiHD01LAXCp2gSq/olsk7Z98yeVJqdGtm2rMnisBt3TtCiIOJwIOAPXvQjlWSGyttv0X6/m/5MHwzV6fTXLiay3cAdQwkBtzMALu1p2ySMEkYYGthwjUWdwZ7gO0gacXnEhSqA+Tcq7lzJMnJjnmXjbC6LSqEfc67GYGQVP8IHQA9+RasxxR1sO63s2kYbX8ybSxUEMUBxugTn9IOMRHl+5dOaezr7+/bgu/8A6i13iPbVUZQx2hRCiBH6ohv5omfjmAPxTdvuTdCNALAhxbBUMANsHmvTd0DDrR40+suIFspbt25V0clLk5XzA5JkF+2AuRWf/FHFVVX018bbxMM0v4bCFh7SnG5lCjacAznAq+U+hLLihJUl9Prz9/mZ8aRGt7ghwChZBKypJVS4MczJbpGOgqPVm4qK5CqpUGEEG4VhdzTjdAyRHXGav2R0t27iIGQ7FABEEi2VWMZBEc5+OaI1nDxZRDctgXAoLbdimTC9N3MCJEdMZpmzUZUl2/YA0YbiCqjvt8MMqeQAgbVOUWZEiJnr7Va8I4Zbv2rlu4Lls2YQO7loYndNvyQFJUz6TgVzWdO3hNGy8QCGVyGwG3heRBMwYPUCelH8N199w6G2fDbBUwX5AMQdgkQOUZn3odjmsih8L6+X39+5UcU1V/xjdRHtADaSrea7kIf0AGMkiYEZ+FzwjT6q7Z2W7mwbiCWFxWIInBK7dsE8uZ5Gidde0j7bVxSFEHeVJeAZCq0Fo5grjmfQ0Hxm7daLlm6TaA2hdqgqOoMrIIIjB7c6mmZ65JJKq/Vftz/BYWeEOsByyGTBLLtZlwgXfOYkyR2A6RG9u7v2um0giAOQyx7cjB6ZmguAfiZma2LiObjqFDGSonzSAY2kwMiJgVpdLxHxWDqFZELHconIlY2sZGJls8udNSa7OPxGPK7b/cGusxmeQBBiTPpPyqK1bAXlyq01OUdiI5BevPvj+2BQdyw3lCnDCYMcyZyInGPjJrRT9DypYa5bIgB9n79KnuMBGP8AEc6TS2ju9uff4UQlrkPvr/aokyEuCIXgOR6fvRC6qIzj05/f96ZctbRnPyiq45NJOxcFnc43t5/4zyHoOVS2ONAgzg57YI9PeqU2CTnI5x19f6U+1pYEsB39+s/StHqJItLer5HJBHf+tcNWxkTB545czH7UJ4wHKOXLrQraljnlP2f60imkWbXH6H6e1JQ9p2iupbIeqJxcpfEI5GlFl+1ctlx0rzoZJLtF0PD4mo2JP0H9TThabqpp9q238pq1Jrldioke2APr+oj6jNZ27r/Dd7qulxQSu23bLSwGBgnJBMkwMitH4Ddj9KE1fAhdJLbgSrJ5WK4bmY5T6045JJ8o6vD5ow4l0BaJb7He4CliSckgKThdp54A6iDNWxUEERAYQcnIyIA5DnS6LgvhqEQQJJ596K/8Pb7NU3NvgnLmuVx6BTnn2iKC0HC1VieQYyYOeeB8OkVcDQEVImkPf96uLkuzLzJ1V8ANvRorNcAhmCg5MELyxMVX8fCuio8wCWEGASAVAbuDu5DNaA6U9/pQmr4aHw4kTyzB+PcelUru2VjyazUpehj9VZF23Z8RAR5lVR5RnMuBBwJGCOnc1eaPhKwfEt2trhg6gl1eSILBgByHLPM572tzQTEwYMjnziPenfljEU9mb5fFucdVx2YvW/hi5pwz8M1NzT8z4LRcsmJMKHBKEnrnn0rFfhVbvFNeL17bsQi44VYWQBtEczJA5k4mvaLmnJUqTzx868c/6Van8vrLmmu+UsDbziLiHAPxhh8YoU6RhFt3Ru+JaG4WGotqUcAEpMsxEYhQRGAOeR1Aou1qAzG1cVXgqxkbRtIb9JIP6eZ9s5qbjmlZkIAIaRmSoiRzgicdKzHENBce1sKMm1dhvNO5t214C9REDqTkdMkVtyz1MOPzILZ9fT6219S74h+HkVCy2rbyQCPSeadFYHlz5nlNC69RYRkDqGZlA3P/AACA20tBYyDI/wBwPpVfokuJbKF7rMLg8mS4CmAxJGMzGI54rW66xaIDORKfpYEF1Jwdrc57jr1pznqGdzxNVzb9vagQcNFwWCXFxkfJxyIPlPPP6eZyB60JqNJYVo2XCDcEhQCnxbnzM/MDtVxpuHtJaQZjaQNrGBEtECpX0MqBcAaIyMciCPec/Gs/Nvswj4pp8sB4loAzRA8MASQSGBHLZBny4jEyPSorWluIW8N1ZGIZpWHJAEcvKe/JfrVqulgGF5mT60tqwwEAcpj4dPpisXm56OeeeT4TKbT3rqMWYBrZkj9SkHEhgSQOXOIPp1s7V5WVtyDdk5PP0G2QfhjnUlvSPJJH1py8OcdvnFabt+hzOTYO9/HICBHfl7VGz8vSizw9zP8ATP8ASmjhr9h70obJ8kWCahp5fKm6ez3EelHroHHT6/5plzQ3On/Na7NBQzeqzI7fSgdTqJmJ++3rRFzh1wjK0raMxyPpjPuaV+rCgS1pTEjkOef3++fwok2oAmPr8KntqQsRn3PP05UNcVpj35fvTcmwoTxfSuqE22+PwrqtaF0a/wAIdqTwvQVLNLuFRqieSIW67ZUu4fYpQadICOKWKfXCgKGgilkUtLTASRST9zTq6gCOmlfSp4pKAIChppWiDUTP05/fI1LAZ4Zrx7/qlwNk1gvWklbiBrgH8w3An3Cj3mvYLmp2wTyzz9Pv6Vgv+oOoS5qbdoc1tO7HsP8AUgf/AMmpTRpi/Earhen8TTWbgje9q0xOYZiimT70BrdMy/6Rdiw3FAoAnG7zSCIBbBweUUZ+FL5XhmnuEZXTI2ey25H0ApLOkvXTuKIqErDMS1xlAJ3bAAFJYnEnAWRiKtcHRiyuL+LoC0tloy/iAhm2W22w3/5AAGgGcciTy5UZo9IGAlZKGCSCiAk8lXrA+fvVgeHAHf1BlYxA6rPYmTRlvmTnvHtT4LnnXLj6/ITw6UIKf7U7bSpHCMCilgUpUUkUUhDSopIHp9+9ONdQAyB6fX+9JHw+R/vUlJQFDAg9Pv3pY+/s1xApNtAHEfeKZHx+lO2122ihEZt/eKRrNSkU3aO9FIKBjph2+v8AilojbXUqQckH5s/ZpfHPf+tA+Ka7xD9miiNyxDnv+1ODn+b9qq3vxljA9SBS6a+HyhDD0IP7Uw2LPxf99L43+6qq/rFQgMwBPIcz8hmohxm11J/9Dk/+2gdl2LvqKeLnrVZouKWrjbVbzdmUqfbcBNWCOu7buXdE7ZWY+HOKCkSBqUH1oO7xC2OR3f8AbkfPkfnQZ4quclyMwSgKiTmBke/71l5qdqPoPrsuTcA61Bc1wBgnPpWe4zx5LSk3GieSgkufgoz7/WqLQ8ds6ryBiHliUbcYUdT/AAge56VMMksibinx+VL/ANC+aNpc4mcx9Ry/astrvxCwuFGVzcBxt2sjA5HmWNreh+oqDXcF1AJZLjKrCIO4QpBwF5Zz0rOXNA+kHio623BBAD5cqQQS0g4/lyDyM1kk7+OXrwqZdKviT/bg1trW3dzrcFxVZiYZcoCM49ShPOPMT6V5preKsW1GpZi283UQmf0AMEAnkOXuT3qO/wAe1LEhy0sCCRB3e89ietScAt6UqDqiwYboWSJRBOwgAnMGIyc9xPU4PHG+w8zHFpR7Nvf4xaGit6ayxdrloWUUMfINgVnaeSqPmdo60SPxGULLaICwu1gwwRhtw3QfSKoeGLp7T+a2NwdV3CSsONyGOgMcxyIq8c6Xewe3bU8wYWCIBkwOcHn6HPMhTlzSTMYuL/EWljj1yCofc4ywAYkY5QwkH3qz0fG7jKv+mZMTKke/aKyHFNelk79lo2n8pYCWVhjzAmCAfgc9agvfi0oyw0IcNkeQj9Lf9shvoehqHKbXwo2csdcI22p4nqQTst2yB1Lbagv/AIjCn/UO3AJgM0EjsE5epx8qBHHSbVzwyDdAJ2mDuPcTz6j4z1rNcN4690lLygNgq+RbZbk7IBO5D0jK/DFYy8yUakDyquEvqbj84HVbltwpmVMGD3VxjHcHPaDRy8RmJUiefIwc+/TmO9YHgl0W2azICEyo/laYKkdPb9qKsXNRbv3LLF2tnzKTnaMGJ6QWA58sdAKzxznF6sja+TeG+Op/b+9IdUnc/T+9VD2iQRtg88Cfj/f3oBgynIPyA+ma7U7Ic6NG2qX+am/mB0YfOs9+Zzy/apF1K9V+n+aoW5cnV+o+dM/O+tV4vqei+y//ACqQXPh8o/rSDYM/OH1pw1Z9flVeyT2+Qp62F6lj8Av96KYbMNOr+4pPzg70INCh5Mw+VMfQdifpRTDZliuqHr8q6q1bbDG4e8V1LkewPd4PeUwF9wcfvNTabhV0cyR7mtGLlOmraHqiifhPUqWP/cV+oNQDhKI+7YVbvvec9Jn6VpZpZoSNIOK7RmjwsyW3FZ6Rk+/OgtTo7mQt1V7ShJHvuE/KtntrjbnmAaTiJ17HnC8HvhgWuh1mTO4E+gyY+Yq5XTKXAZVnmImeUyOn1rVnTJ/IvyFL4S/yjHoKFGkXF40uYmaW1unaSAOREGTyjqP3qu1vBV3reO93PJQMEx1mSB7gVs3046eX4UO9qObfSPeZqL8t3FEzjCXCR57xO7ZtOTqFVXIG1XIBI5CJIJ5R1oK2unu+cadRuB8wIyDz5dZre8Q4Ra1Hlu2kugZi4A2eUiR6HNV6cDCLtGmQL2tqAPkKh5Vts7+tft0ZrGlw+jO2HFnKPkCDB3Fx0DSueg/Y1V67ivkuHzw0mJCgzOMjMzy+vWtPreFMRFu3txzJbB7wFz061VX/AMJXXkG8M97ZkH0ljWnnwZ0SypRqN/NmfbWaZCqMtveQCGACgEmIYjn8YHLrVLq3/wBZtqlxuABLzIBkZrcWvwbZt+YAeJH62jJ7gdKI0HC2WRFt5aQzCSMdDFbwyqqfRyZIbu6+Zgtb41xke0hLLsMDMbSNo7ETPzpmo1ty5dCBwXEgdBkP0zyDR7V6NY4C+cADqRAH/szT9RwPAiJ7wvtGBHvPwrKc8UXVijGSXJg+IaS86BSV3AseZjYQuGkDkVnl1612m0uzaDbYm3JBjoV2spgbSpn6eta9/wAPLli5HUyQfef6nlGKfd4aLajnGMZx2kVUZY7sEn1L6cf2YnRXXtHeouOuVO0THpJMT1//AG9aE1Orugs4s3BvJE3AUADEkqu4R1PUelegWeGFhDLgkGD0jI95zPSal1fDbKy8bngZySxGAP6fCk542dcJYUub+gF+GLttPDe95rh2oS7pM5AEB+fqR/CK31prd0tBU8lMEH9JPXvmouBcMtLbV/DUXIEmMzzj51cJbXGB6YHTtUuMPYrI8T/CmB3QvfPQf4qsv2bn8RX5ZrQPp1JkqJ70G/CrZ6R8CabRjaXoUTWBMcyfWhb+nIPWtAeEqOVc2gJ5kmOXPE1PyIaXsZ+zYcmFzRduxc7H5j+pqyHDFH2acnDQKEidQezYf7AogaZuw+lELpyKf4Z7mqHqBmy46L9f71DcVx0Hsastn3io2s07DUqvEbv9Aa6rHwPQV1SLVhoalBoZWHen7vWuhxIUwgGnA0OHp4epcS1Mlpai30oapoqyWuqPdSg0DslFNe3P+aQNS7qTVjsZasAEmcn6DsB0zmpYrgaWaSSQDGQHnUL6denP40QaRlHKKmUU/QZUa7RF1ZFwWDebnBiFgfX5d68SbUXkuBGb/UFwI3/duCnHaTX0FtFeKcWsKNaxJk/mlUD08RT+wPyqscaTGej8E0TW3vWHwN5e2TBm2cAA+kfvVjc4WDycD0Ef80TqrfmRxggkex/zUv5geoIwR8PWk4p9oGrKO9+HC7ea4SBkDMT32zBPxkelPbgRGFI5yZkmf5iepq1OtUNthumemc96IRwcihY0uhPG12ipHB4XEE/CJ+v0qSzwsKd3M9e/7Y9qtKQ0vLiTQB+Uact7DA+FF2lgc5Pf76UpNIaagkAvuaUMKjJpCasGyUvTCwqOa6adC2H7qSabSTRQrHbq6aYWppuUULYk3U03KiNyml/Wq1FuPa7XVA10eldVambn+Y+29S7qBsuCKlD1vPGZxmF7q6aHDU7fWTiXsEbqhbU+bb27npGY+lDXtVBgZqsv34Y+eSx5YxIH0qWjr8Pi3fJoNNd3ASRPX79jU4qj090ADxDt57TkTjPPl/ap/GPIGc4xUUU8XxUi2FcjgkjqKCsaqahvagKSxBHfty5/CKTQsePZtMtww7imalNykdwev0rOPxFEPiDzxggRI7VM/G4k4IMc8R1zSo6v8SaacSys6gwttj5+fTI5/SRRFrUiCCeVYTiXHlL+IpgqDtEnriTHM4PwmobX4pQAhkaNwAVcuxyJMkczyzPpT1fZ1T8F8Gz4/s9GJrxjS2PzXE1a2ZT8xvnoVVyxInngGrz8Q/i/UOm1LXhWnG3cxHiN3hZwPvrVl+BeHW1tNe8sgkA/yrAk95M/SjpHn+W7pmw1oGxgTGO8R6zWd1nGlUbrjqk5yc8vNj2qT8Ragtbjaf1SDnKqQcfSsXxLTeMv6syT8e00JHd4fwyq5dml4XxfxbjMLgVAsLI5tA5iMmAYqdNaXbwrl3aTG0DzHmZGB0wJPpWO4Vqrlg4hXUgTG4GZERjEftNazhdy1ashwQG/UzQu5AR+lWPqOXLsAABTfB15YKP4VfVfdGutpA7nvUm6sLd/EdxocNtGIVRPf4fM0Rp+M3ltEIqzu/UxPXpG2Jx15etRyedPwU0rfZrrlwD49B1NRm8OQyeoHT49qotLr2cecEEDJU5c+jdFz0ijLl1duJTvBwB8qaRyTxyi6osfF+fpXTQ9p8SGEeginNc9atROeUqJZrt9QG5TS/rT1I3J/Eppeod9N8QU9SdyUmk96i8WmNdPeqUWS5ImMd6jLetDXL/r9KHa+O9aRxtkOaCmY11Vbajt9f8AmurbyjLZByXO1Tpc70GVHw+FKjHvWrimCdB9KHNBi4RT/FrNwK2CHg9Pp/ioPCAJxgxnkZH2PrSeN3qNtQB3qHiNYZ5R4TIHUncpAIn+I/Weh/vSNrBbWE80DHLcOwmcioNTrIyY+E9e/wB96E8RQc82nMRnp9+lYOB6+KSlyy1HEwqhphsTIMHHy+tCvxoPb3AnzYK9Pjz+4qJSTM59OQIPel0dq3JiFB9R+01OhayY422B3NUEhQRJ3Yb0iD8aGTWhlMLk4IgZLTIEdMH50TxK2pLQCcQoHf8A4iqjR2MsrWjcYjEEwp+MgfWjU64+KdWiHS2gbm4tsKzgid2OQB65mKJ0mnANxnJnoYLEGc8h+rpTTw1QdxktAIGdqEYgA9fX9q6xrDvYbtu5iD6gL3HapZrHM64AuL3Lr7SyMBkLuG08uYXmOXX1ojg2qdApuf8A2yRDgnZPRT0VpgZ5wM9Kk1TlvLJaAsSZgxiZPMj96F03H2s2jbQCJJ+s/wBTRRg8rjkczSXdS7G4TA6H0UTAnr3rOniDA+QiRPr6YnBoKxxFmBUOVX+Pvk5kdq7R24IM+gOfURPuKaiKWbZ8F3oOG3LgLMSdwxJEzPeamGhVQUZvYggT0yf2qNdW1pSoxE5B+GZntVNr9Vdutun+GAoBJ5D5k1NG8MsnwX2kZN0YUj+RjBGMzz9Pari3fBEKu8nkP4fmcVn+FaZ5VwVZSQHDCGU9CPhVrZ1YSJQz5juyQPNEn1g9qDLLkXVl3pPLEoATOOYxFC8StNAlomQQM4IHT2qVtV5ljP8AmZiniyGK3GmRBAnlH96pRs4MmbT4mR20YNEGBtjnGF/aas7d6VBP1FAW3J3FyIOB3H+KeLoUQK0WOTOHNmi+GGl6abtANqPSo21FbLEcbyB5vVGdR61XvqaibUCtFhIeQsW1HrFQPqv91V76mh3vVrHCZvIHvrPWh7mrMdB8qr714gdqCNwnnkV0QwoyllYc+tJJ6+wrqCye/sSP2pK10iZbM2TPTN8UtdXEjtYqNNKQaSupPhjXQ1mqNl9K6uouiQW5piSIPLpQseYE/wAJMUtdWU4o7/D5ZNNMmtLuJziSfh1P1oXXagASBHec9On30rq6s59HT4fmbT9KKi/xZktbjgT05sDAM1LpuJsrr5iQT7QOke9dXVkdxb3dWGEAAknGMAf1/wA1XflirArBBBMick4kyekV1dSaJi66K7VW7kkOQCYaR2AETH+aDXhjOp8wIBzzxInFdXUgfViPoBZsMwALwYJ7ZnAPoKE0/ECji3O5Okjty98CurqTNYpVYYdaQFWSA5P0FO3mJAgqRPwxkexFdXUF7MvOFXAisRO45POMchz6T9aN09r9R7ifbqPnS11Wjmytptjle4GADAKIzGQD0jqfejUuGSC2BjlXV1VDiRz5oqUFY80xm+xXV1dseTxJcMjLD1qJ3rq6tEiGwa7cP3ioizdh866urVGbGHd1z71HdZgPSurqaYmgK48c6i/OZiurq6Iq0c0m0xfzo7V1dXVWiJ3Z/9k=",
         "sender": {
           "id": "1769414323380",
           "username": "Antek123",
           "avatar": "🤖"
         },
-        "timestamp": "2026-01-26T10:08:55.578Z",
-        "type": "text",
+        "timestamp": "2026-02-04T09:08:19.614Z",
+        "type": "image",
         "replyTo": null,
         "reactions": {},
         "readBy": [
-          "T4vtYY997hcVIs9cAAAP"
-        ]
-      },
-      {
-        "id": "17694221355830.04924020605648938",
-        "content": "cosik",
-        "sender": {
-          "id": "1769414323380",
-          "username": "Antek123",
-          "avatar": "🤖"
-        },
-        "timestamp": "2026-01-26T10:08:55.583Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "T4vtYY997hcVIs9cAAAP"
-        ]
-      },
-      {
-        "id": "17694221656900.31944048181168583",
-        "content": "cos",
-        "sender": {
-          "id": "1769414323380",
-          "username": "Antek123",
-          "avatar": "🤖"
-        },
-        "timestamp": "2026-01-26T10:09:25.690Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "EiPMP0RLTDJpIyi-AAAR"
-        ]
-      },
-      {
-        "id": "17694221656970.7160899536909044",
-        "content": "cos",
-        "sender": {
-          "id": "1769414323380",
-          "username": "Antek123",
-          "avatar": "🤖"
-        },
-        "timestamp": "2026-01-26T10:09:25.697Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "EiPMP0RLTDJpIyi-AAAR"
-        ]
-      },
-      {
-        "id": "17694221766010.7237177341350074",
-        "content": "1",
-        "sender": {
-          "id": "1769414323380",
-          "username": "Antek123",
-          "avatar": "🤖"
-        },
-        "timestamp": "2026-01-26T10:09:36.601Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "qsiCrJqwwtErsy0vAAAT"
-        ]
-      },
-      {
-        "id": "17694221766040.6431475480520497",
-        "content": "1",
-        "sender": {
-          "id": "1769414323380",
-          "username": "Antek123",
-          "avatar": "🤖"
-        },
-        "timestamp": "2026-01-26T10:09:36.604Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "qsiCrJqwwtErsy0vAAAT"
-        ]
-      },
-      {
-        "id": "17694223618680.5658467473615059",
-        "content": "2",
-        "sender": {
-          "id": "1769414323380",
-          "username": "Antek123",
-          "avatar": "🤖"
-        },
-        "timestamp": "2026-01-26T10:12:41.868Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "IzGj0P959bg-9uFyAAAX"
-        ]
-      },
-      {
-        "id": "17694223618720.3280386214688107",
-        "content": "2",
-        "sender": {
-          "id": "1769414323380",
-          "username": "Antek123",
-          "avatar": "🤖"
-        },
-        "timestamp": "2026-01-26T10:12:41.872Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "IzGj0P959bg-9uFyAAAX"
-        ]
-      },
-      {
-        "id": "17694224608450.9693554914680087",
-        "content": "3",
-        "sender": {
-          "id": "1769414323380",
-          "username": "Antek123",
-          "avatar": "🤖"
-        },
-        "timestamp": "2026-01-26T10:14:20.846Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "6HMkVJvK1FmXU-DyAAAZ"
-        ]
-      },
-      {
-        "id": "17694224608520.613617326503423",
-        "content": "3",
-        "sender": {
-          "id": "1769414323380",
-          "username": "Antek123",
-          "avatar": "🤖"
-        },
-        "timestamp": "2026-01-26T10:14:20.853Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "6HMkVJvK1FmXU-DyAAAZ"
-        ]
-      },
-      {
-        "id": "17694228926840.055422652695233054",
-        "content": "3",
-        "sender": {
-          "id": "1769414323380",
-          "username": "Antek123",
-          "avatar": "🤖"
-        },
-        "timestamp": "2026-01-26T10:21:32.684Z",
-        "type": "text",
-        "replyTo": null,
-        "reactions": {},
-        "readBy": [
-          "zD1Raq6ODhknmGDaAAAD"
+          "fZhtKLl9AeT4D0akAAAL"
         ]
       }
     ]

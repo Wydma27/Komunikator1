@@ -141,6 +141,28 @@ function ChatWindow({
     const userProfile = chatId === 'general' ? null : users.find(u => u.username === chatId);
 
     const isEmoji = (str?: string) => !str?.startsWith('http') && !str?.startsWith('data:');
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        // Limit size to 5MB for base64 storage
+        if (file.size > 5 * 1024 * 1024) {
+            alert('Zdjęcie jest za duże. Maksymalny rozmiar to 5MB.');
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const base64 = event.target?.result as string;
+            sendMessage(base64, 'image');
+        };
+        reader.readAsDataURL(file);
+
+        // Reset input
+        e.target.value = '';
+    };
 
     return (
         <div className="chat-window">
@@ -230,11 +252,28 @@ function ChatWindow({
 
                 <form onSubmit={handleSubmit} className="chat-input-form">
                     <div className="input-actions">
+                        <input
+                            type="file"
+                            ref={fileInputRef}
+                            style={{ display: 'none' }}
+                            accept="image/*"
+                            onChange={handleImageUpload}
+                        />
+                        <button
+                            type="button"
+                            className="icon-btn"
+                            onClick={() => fileInputRef.current?.click()}
+                            title="Wyślij zdjęcie"
+                            disabled={isSending}
+                        >
+                            📷
+                        </button>
                         <button
                             type="button"
                             className="icon-btn"
                             onClick={() => { setShowGifPicker(!showGifPicker); setShowEmojiPicker(false); }}
                             title="GIF"
+                            disabled={isSending}
                         >
                             <span className="gif-icon">GIF</span>
                         </button>
@@ -243,6 +282,7 @@ function ChatWindow({
                             className="icon-btn"
                             onClick={() => { setShowEmojiPicker(!showEmojiPicker); setShowGifPicker(false); }}
                             title="Emoji"
+                            disabled={isSending}
                         >
                             😊
                         </button>
@@ -258,7 +298,7 @@ function ChatWindow({
                         rows={1}
                     />
 
-                    <button type="submit" className="send-btn" disabled={!messageInput.trim()}>
+                    <button type="submit" className="send-btn" disabled={!messageInput.trim() || isSending}>
                         ➤
                     </button>
                 </form>
